@@ -4,7 +4,9 @@ import { utilService } from "../../../services/util.service.js"
 export const noteService = {
     query,
     getNoteById,
-    removeNote
+    removeNote,
+    creatNote,
+    addNote
 }
 
 const KEY = 'notesDB'
@@ -80,7 +82,17 @@ function removeNote(noteId) {
     return Promise.resolve()
 }
 
-function _creatNote(type, txt) {
+function addNote(note){
+    let notes = _loadFromStorage()
+    if (!notes) {
+        notes = gNotes
+    }
+    notes.unshift(note)
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function creatNote(type, txt) {
     let note
     switch (type) {
         case 'note-txt':
@@ -96,7 +108,7 @@ function _creatNote(type, txt) {
             note = _creatVideoNote(txt)
             break
     }
-    return note
+    return Promise.resolve(note)
 }
 
 function _creatTxtNote(txt) {
@@ -117,7 +129,7 @@ function _creatImgNote(txt) {
         type: 'note-img',
         info: {
             url: txt,
-            title:'My img'
+            title: 'My img'
         },
         backgroundColor: utilService.getRandomColor()
     }

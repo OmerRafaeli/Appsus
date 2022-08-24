@@ -16,7 +16,7 @@ export class NotePreview extends React.Component {
     }
 
     loadNote = () => {
-        console.log('im load');
+        // console.log('im load');
         const noteId = this.props.note.id
         noteService.getNoteById(noteId)
             .then(note => { this.setState({ note }) })
@@ -40,22 +40,24 @@ export class NotePreview extends React.Component {
     }
 
     onChangeColor = (backgroundColor) => {
-        console.log('backgroundColor:', backgroundColor)
-        this.setState({ backgroundColor })
-        // this.loadNote()
-
+        // console.log('backgroundColor:', backgroundColor)
+        const { note } = this.state
+        this.setState({ backgroundColor }, () => {
+            this.loadNote()
+        })
+        console.log('note from color:', note)
     }
 
     render() {
         const { note } = this.state
-        // console.log('this.state.note:', this.state.note)
         if (!note) return
+        // console.log('this.state.note:', this.state.note)
         const { onRemoveNote } = this.props
         const { txt, url } = note.info
         const { backgroundColor } = note
         const { onSetTxt, onChangeColor } = this
         console.log('backgroundColor:', backgroundColor)
-        function DynamicCmp(props) {
+        function DynamicCmp() {
             switch (note.type) {
                 case 'note-txt':
                     return <NoteTxt onSetTxt={onSetTxt} note={note} txt={txt} />
