@@ -20,11 +20,11 @@ export function AppHeader() {
         <div className="app-menu-icon">
             <img src="../assets/img/appMenuIcon.svg" alt="" />
         </div>
-        {/* <nav>
+        <nav>
             <NavLink exact to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/mail">Mail</NavLink>
             <NavLink to="/note">Keep</NavLink>
-        </nav> */}
+        </nav>
     </header>
 }
