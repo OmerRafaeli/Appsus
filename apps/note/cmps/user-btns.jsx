@@ -13,7 +13,7 @@ export class UserBtns extends React.Component {
         const { backgroundColor } = ev.target.style
         this.setState({ isColorOn: !this.state.isColorOn })
         this.props.onChangeColor(backgroundColor)
-        // console.log('backgroundColor:', backgroundColor)
+        console.log('backgroundColor:', backgroundColor)
     }
 
 
@@ -24,7 +24,7 @@ export class UserBtns extends React.Component {
         const { onShowColors, onGetColor } = this
         const { isColorOn } = this.state
         const { note,onRemoveNote } = this.props
-        console.log('isColorOn:', isColorOn)
+        // console.log('isColorOn:', isColorOn)
         return <section className="user-btns">
             <i className="fa-solid fa-paste"></i>
             <div onClick={onShowColors}><i className="fa-solid fa-palette" ></i></div>

@@ -20,10 +20,10 @@ export class NoteIndex extends React.Component {
             })
     }
 
-    onAddNote = (type) => {
-        // console.log('type:', type)
-        if(!type) return
-        noteService.addNote
+    onAddNote = (note) => {
+        // console.log('note:', note)
+        noteService.addNote(note)
+        .then(note => this.setState({ notes: [note, ...this.state.notes] }))
     }
 
     onRemoveNote = (noteId) => {
