@@ -28,7 +28,7 @@ const emails = [
         id: 'e1012', 
         subject: 'Kiss you!', 
         body: 'Would love to catch up sometimes', 
-        isRead: false, 
+        isRead: true, 
         sentAt : 1551243930594, 
         to: 'popo@momo.com'
     },
@@ -44,7 +44,7 @@ const emails = [
         id: 'e1014', 
         subject: 'Where are you?', 
         body: 'Would love to catch up sometimes', 
-        isRead: false, 
+        isRead: true, 
         sentAt : 1551133510594, 
         to: 'nono@momo.com'
     },
@@ -87,7 +87,7 @@ function _createEmail(email) {
         id: utilService.makeId(),
         subject: utilService.makeLorem(3),//email.subject,
         body: utilService.makeLorem(10),//email.body,
-        isRead: false, 
+        isRead: (utilService.getRandomIntInclusive(1, 100) >= 50) ? true : false, 
         sentAt: Date.now(),
         to: 'momo@momo.com'
     }
