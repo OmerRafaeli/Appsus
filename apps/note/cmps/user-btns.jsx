@@ -17,15 +17,18 @@ export class UserBtns extends React.Component {
     }
 
 
+
+
     render() {
 
         const { onShowColors, onGetColor } = this
         const { isColorOn } = this.state
+        const { note,onRemoveNote } = this.props
         console.log('isColorOn:', isColorOn)
         return <section className="user-btns">
             <i className="fa-solid fa-paste"></i>
             <div onClick={onShowColors}><i className="fa-solid fa-palette" ></i></div>
-            <i className="fa-solid fa-trash"></i>
+            <div onClick={() => onRemoveNote(note.id)}> <i className="fa-solid fa-trash"></i></div>
             {isColorOn && <div className="color-pick">
                 <div className="picked-color" style={{ backgroundColor: 'rgb(243, 114, 140)' }} onClick={onGetColor}></div>
                 <div className="picked-color" style={{ backgroundColor: 'rgb(213, 114, 243)' }} onClick={onGetColor}></div>

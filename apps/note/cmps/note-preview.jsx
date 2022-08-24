@@ -16,6 +16,7 @@ export class NotePreview extends React.Component {
     }
 
     loadNote = () => {
+        console.log('im load');
         const noteId = this.props.note.id
         noteService.getNoteById(noteId)
             .then(note => { this.setState({ note }) })
@@ -40,15 +41,16 @@ export class NotePreview extends React.Component {
 
     onChangeColor = (backgroundColor) => {
         console.log('backgroundColor:', backgroundColor)
-        this.setState({ backgroundColor }, () => {
-            this.loadNote()
-        })
+        this.setState({ backgroundColor })
+        // this.loadNote()
+
     }
 
     render() {
         const { note } = this.state
         // console.log('this.state.note:', this.state.note)
         if (!note) return
+        const { onRemoveNote } = this.props
         const { txt, url } = note.info
         const { backgroundColor } = note
         const { onSetTxt, onChangeColor } = this
@@ -66,10 +68,12 @@ export class NotePreview extends React.Component {
             }
         }
 
-        return <section className="note-preview">
+        return <section className="note-preview" style={{ backgroundColor }}>
 
-            <DynamicCmp style={{ backgroundColor }} />
-            <UserBtns note={note} onChangeColor={onChangeColor} />
+            <DynamicCmp />
+            <UserBtns note={note}
+                onChangeColor={onChangeColor}
+                onRemoveNote={onRemoveNote} />
         </section>
     }
 }
