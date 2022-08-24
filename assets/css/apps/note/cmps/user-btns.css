@@ -1,0 +1,31 @@
+.user-btns{
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.user-btns >*{
+    cursor: pointer;
+}
+
+.user-btns .color-pick{
+    display: flex;
+    position: absolute;
+    bottom: 25px;
+    right: 10px;
+}
+
+.user-btns .color-pick>*:not(:last-child){
+    margin-inline-end: 5px;
+}
+
+.color-pick .picked-color{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color:rgb(243, 114, 140);
+
+}

@@ -15,7 +15,7 @@ export class NoteIndex extends React.Component {
         noteService.query()
             .then(notes => {
                 this.setState({ notes })
-                console.log('notes:', notes)
+                // console.log('notes:', notes)
             })
     }
 
