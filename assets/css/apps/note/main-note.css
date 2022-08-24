@@ -4,8 +4,11 @@
 @import './views/note-index.css';
 
 /* Cmps */
-@import './cmps/note-list.css';
-@import './cmps/note-preview.css';
+@import 'cmps/note-list.css';
+@import 'cmps/note-preview.css';
+@import 'cmps/note-video.css';
+@import 'cmps/note-img.css';
+@import 'cmps/user-btns.css';
 
 /* MQ */
 @import './mq.css';
