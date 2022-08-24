@@ -31,3 +31,16 @@
     width: 25px;
     margin-inline-end: 10px;
 }
+
+.email-container .email-body{
+    margin-inline-start: 50px;
+}
+
+.email-preview-panel >*{
+    margin-inline-end: 20px;
+    cursor: pointer;
+}
+
+.email-container .email-subject {
+    margin-inline-start: 50px;
+}

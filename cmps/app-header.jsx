@@ -17,14 +17,14 @@ export function AppHeader() {
         
         {/* <input className="header-search" type="search" placeholder="Search Here..." /> */}
 
-        <div className="app-menu-icon">
-            <img src="../assets/img/appMenuIcon.svg" alt="" />
-        </div>
-        <nav>
-            <NavLink exact to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Keep</NavLink>
+        <nav className="header-nav-bar">
+            <NavLink to="/mail"><img  className="icon-btn" src="../assets/img/mailIcon.svg" alt="" /></NavLink>
+            <NavLink to="/note"><img  className="icon-btn" src="../assets/img/keepIcon.svg" alt="" /></NavLink>
+            <NavLink exact to="/"><img className="icon-btn" src="../assets/img/homeIcon.svg" alt="" /></NavLink>
+            <NavLink to="/about"><img  className="icon-btn" src="../assets/img/aboutIcon.svg" alt="" /></NavLink>
         </nav>
+        {/* <div className="app-menu-icon">
+            <img src="../assets/img/appMenuIcon.svg" alt="" />
+        </div> */}
     </header>
 }

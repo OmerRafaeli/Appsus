@@ -24,9 +24,7 @@ export class EmailDetails extends React.Component {
         EmailService.getById(emailId)
             .then((email) => {
                 this.setState({ email })
-                console.log('email:', email)                
             })
-        // console.log('email:', email)
     }
 
     onGoBack = () => {
@@ -39,13 +37,17 @@ export class EmailDetails extends React.Component {
         return <section className="email-details-container">
             <SideNav />
             <div className="email-details">
+                <div className="email-nav">
+                    <a className="go-back-btn" onClick={this.onGoBack}><i className="fa-solid fa-arrow-left-long"></i></a>
+                    <img className="important" src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />
+                    <a><i className="fa-solid fa-envelope"></i></a>
+                    <a><i className="fa-solid fa-trash"></i></a>
+                </div>
                 <h1>Sent To: {email.to}</h1>
-                <p>Subject: {email.subject}</p>
-                <p>{email.body}</p>
+                <hr />
+                <p className="email-subject">Subject: {email.subject}</p>
+                <p className="email-body">{email.body}</p>
             </div>
-            <a className="go-back-btn fa-solid fa-palette" onClick={this.onGoBack} >Back</a>
-            
-            
         </section>
     }
 }

@@ -16,6 +16,7 @@ export class MailIndex extends React.Component {
         EmailService.query()
             .then((emails) => this.setState({ emails }))
     }
+    
 
     render() {
         const {emails} = this.state
