@@ -49,8 +49,6 @@ nav a.active {
 }
 
 .header-nav-bar{
-    /* position: fixed;
-    left: 82%; */
     margin-inline-end: 25px;
     transform: scaleX(1);
     transform-origin: right;
