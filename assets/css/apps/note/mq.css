@@ -1,0 +1,19 @@
+
+
+@media (min-width:500px){
+    .note-list{
+        columns: 2;
+    }
+}
+
+@media (min-width:650px){
+    .note-list{
+        columns: 3;
+    }
+}
+
+@media (min-width:900px){
+    .note-list{
+        columns: 4;
+    }
+}
