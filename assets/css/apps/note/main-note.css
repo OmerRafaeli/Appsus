@@ -1,7 +1,7 @@
 
 
 /* Views */
-@import 'views/note-index.css';
+@import './views/note-index.css';
 
 /* Cmps */
 @import 'cmps/note-list.css';
@@ -11,4 +11,4 @@
 @import 'cmps/user-btns.css';
 
 /* MQ */
-@import 'mq.css';
+@import './mq.css';
