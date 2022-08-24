@@ -1,7 +1,7 @@
 import { storageService } from "../../../services/storage.service.js"
 import { utilService } from "../../../services/util.service.js"
 
-export const emailService = {
+export const EmailService = {
     query,
     getById,
     // remove,
@@ -15,7 +15,7 @@ const loggedinUser = {
     fullname: 'Mahatma Appsus'
 }
 
-const emails = [
+const data = [
     {
         id: 'e1010', 
         subject: 'Miss you!', 
@@ -82,14 +82,14 @@ function getById(emailId) {
 //     return Promise.resolve()
 // }
 
-function _createEmail(email) {
+function _createEmail(email) {    
     const newEmail = {
         id: utilService.makeId(),
-        subject: utilService.makeLorem(3),//email.subject,
-        body: utilService.makeLorem(10),//email.body,
+        subject: email.subject,//email.subject,
+        body: email.body,//email.body,
         isRead: (utilService.getRandomIntInclusive(1, 100) >= 50) ? true : false, 
-        sentAt: Date.now(),
-        to: 'momo@momo.com'
+        sentAt: email.sentAt,
+        to: email.to
     }
     
     return newEmail
@@ -99,7 +99,7 @@ function _createEmails(){
     const emails = []
 
     for (let i = 0; i < 5; i++) {
-        const email = emails[utilService.getRandomIntInclusive(0, emails.length - 1)]
+        const email = data[utilService.getRandomIntInclusive(0, emails.length - 1)]        
         emails.push(_createEmail(email))
     }
     console.log('data:', emails)

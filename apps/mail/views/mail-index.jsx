@@ -1,6 +1,6 @@
 import { MailList } from "../cmps/mail-list.jsx"
 import { SideNav } from "../cmps/side-nav-bar.jsx"
-import { emailService } from "../services/mail.service.js"
+import { EmailService } from "../services/mail.service.js"
 
 export class MailIndex extends React.Component {
 
@@ -13,7 +13,7 @@ export class MailIndex extends React.Component {
     }
 
     loadEmails = () => {
-        emailService.query()
+        EmailService.query()
             .then((emails) => this.setState({ emails }))
     }
 
@@ -23,8 +23,6 @@ export class MailIndex extends React.Component {
             <section className="mail-index-container">
                 <SideNav />
                 <MailList emails={emails}/>
-                {console.log('emails:', emails)
-                }
             </section>
         )
     }

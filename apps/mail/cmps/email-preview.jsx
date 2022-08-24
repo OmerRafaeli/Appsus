@@ -18,7 +18,7 @@ export function EmailPreview({ email }) {
         <div className="important">
             <img src="assets/img/importantUnmarked.svg" alt="" />
         </div>
-        <Link className="email-container" to={"/mail/" + email.id} email={email.id}>
+        <Link className="email-container" to={"/mail/" + email.id}>
             <h3>{email.to}</h3>
             <p>{email.subject}</p>
             <p>{email.body}</p>
