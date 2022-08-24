@@ -6,7 +6,7 @@ export class EmailDetails extends React.Component {
     // const {emailId} = props.match.params
 
     state = {
-        email: null
+        email: null,
     }
 
     componentDidMount() {
