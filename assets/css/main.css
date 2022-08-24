@@ -9,12 +9,16 @@
 @import './basics/helpers.css';
 @import './basics/layout.css';
 
+
+/* APPS */
+@import 'apps/note/main-note.css';
+
+@import './apps/mail/views/mail-app.css';
+
+
 /* Views */
 @import './views/home.css';
 
-@import './apps/note/views/index-app.css';
-
-@import './apps/mail/views/mail-app.css';
 
 /* Cmps */
 

@@ -22,7 +22,6 @@ export class NoteIndex extends React.Component {
     render() {
         const { notes } = this.state
         return <section className="note-index">
-            im note index
             <NoteList notes={notes} />
         </section>
 
