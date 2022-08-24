@@ -3,16 +3,13 @@ import { EmailService } from "../services/mail.service.js"
 
 
 export class EmailDetails extends React.Component {
-    // const {emailId} = props.match.params
 
     state = {
         email: null,
     }
 
     componentDidMount() {
-        // setTimeout(() => {
         this.loadEmail()
-        // }, 2000)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -46,6 +43,9 @@ export class EmailDetails extends React.Component {
                 <p>Subject: {email.subject}</p>
                 <p>{email.body}</p>
             </div>
+            <a className="go-back-btn fa-solid fa-palette" onClick={this.onGoBack} >Back</a>
+            
+            
         </section>
     }
 }
