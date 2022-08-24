@@ -7,18 +7,18 @@ export function AppHeader() {
 
     return <header className="app-header">
         <div className="menu-icon">
-            <img src="/assets/img/menuIcon.svg" alt="" />
+            <img src="../assets/img/menuIcon.svg" alt="" />
         </div>
         <NavLink className to="/">
             <div className="logo-container">
-                <img src="/assets/img/logo.svg" alt="" />
+                <img src="../assets/img/logo.svg" alt="" />
             </div>
         </NavLink>
         
         {/* <input className="header-search" type="search" placeholder="Search Here..." /> */}
 
         <div className="app-menu-icon">
-            <img src="/assets/img/appMenuIcon.svg" alt="" />
+            <img src="../assets/img/appMenuIcon.svg" alt="" />
         </div>
         {/* <nav>
             <NavLink exact to="/">Home</NavLink>
