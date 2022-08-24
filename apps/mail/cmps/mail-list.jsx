@@ -1,9 +1,11 @@
-export class MailList extends React.Component {
-    render() {
-        return (
-            <section className="mail-list-container">
-                Hello MailList
-            </section>
-        )
-    }
+import { EmailPreview } from "./email-preview.jsx"
+export function MailList({ emails }) {
+
+    return <section className="mail-list-container">
+        {emails.map(email => <EmailPreview key={email.id}
+            email={email}/>)}
+    </section>
+
 }
+
+

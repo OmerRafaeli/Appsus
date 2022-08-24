@@ -1,4 +1,5 @@
 header {
+    width: 100%;
     background: rgb(251, 251, 251);
     border-bottom: 2px solid white;
 }
@@ -15,22 +16,15 @@ header {
     flex-grow: 1;
 }
 
-.app-menu-icon img {
+.app-menu-icon {
     height: 35px;
-    flex-grow: 1;
+    margin-inline-end: 25px;
 }
 
 .logo-container img{
     position: relative;
     left: 0;
     width: 125px;
-}
-
-.header-search{
-    flex-grow: 1;
-    max-width: 45%;
-    text-indent: 35px;
-    font-size: 1.23em;
 }
 
 nav a {
