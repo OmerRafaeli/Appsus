@@ -1,5 +1,5 @@
 header {
-    background: lightcyan;
+    background: rgb(251, 251, 251);
     border-bottom: 2px solid white;
 }
 
@@ -9,8 +9,33 @@ header {
     padding: 20px 0;
 }
 
+.menu-icon img{
+    margin-inline-start: 25px;
+    width: 35px;
+    flex-grow: 1;
+}
+
+.app-menu-icon img {
+    height: 35px;
+    flex-grow: 1;
+}
+
+.logo-container img{
+    position: relative;
+    left: 0;
+    width: 125px;
+}
+
+.header-search{
+    flex-grow: 1;
+    max-width: 45%;
+    text-indent: 35px;
+    font-size: 1.23em;
+}
+
 nav a {
     margin: .5em;
+    justify-self: end;
 }
 
 nav a:active {
