@@ -1,0 +1,20 @@
+.compose-container{
+    display: flex;
+    flex-direction: column;
+    background-color: azure;
+    width: 50%;
+    height: 45%;
+    position: fixed;
+    bottom: 0%;
+    right: 0;
+}
+
+.compose-container >*{
+    padding: 5px;
+    text-indent: 25px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(223, 223, 223);
+    background-color: aliceblue;
+}

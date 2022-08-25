@@ -127,7 +127,7 @@ function _createEmails(){
     const emails = []
 
     for (let i = 0; i < 5; i++) {
-        const email = data[i]        
+        const email = data[i]       
         emails.push(_createEmail(email))
     }
     console.log('data:', emails)

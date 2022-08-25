@@ -1,4 +1,15 @@
 .side-nav-container{
-    width: 15%;
+    width: 150px;
     flex-grow: 1;
+}
+
+.side-nav-container>*{
+    margin-left: 10%;
+}
+
+.side-nav-container .compose-img{
+    margin-top: 35px;
+    width: 85px;
+    height: auto;
+    cursor: pointer;
 }
