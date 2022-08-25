@@ -11,21 +11,26 @@ export class SideNav extends React.Component {
 
     onIsComposing = () => {
         let {isComposing} = this.state
-        isComposing = true
-        this.setState({isComposing}, () => console.log('isComposing:', this.state.isComposing))
+        isComposing = !isComposing
+        this.setState({isComposing})
         // isComposing = !isComposing
         
     }
 
     render() {
-        let {isComposing} = this.state
-        console.log('isComposing:', isComposing)
-        
+        let {isComposing} = this.state        
         return <section>
             <nav className="side-nav-container">
                 <img onClick={this.onIsComposing} className="compose-img" src="assets/img/composeIcon.svg" alt="" />
             </nav>
-            {isComposing && <Compose />}
+            {isComposing && <Compose onIsComposing={this.onIsComposing}/>}
+            <div className="filter">
+            <a href=""><i className="fa-solid fa-inbox"></i>  Inbox</a>
+            <a href=""><i className="fa-regular fa-star"></i>  Starred</a>
+            <a href=""><i className="fa-solid fa-paper-plane"></i>  Sent</a>
+            <a href=""><i className="fa-solid fa-file"></i>  Draft</a>
+            <a href=""><i className="fa-solid fa-trash"></i>  Trash</a>
+            </div>
         </section>
 
     }

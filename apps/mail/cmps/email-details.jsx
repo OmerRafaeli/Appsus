@@ -58,7 +58,7 @@ export class EmailDetails extends React.Component {
             <div className="email-details">
                 <div className="email-nav">
                     <a className="go-back-btn" onClick={this.onGoBack}><i className="fa-solid fa-arrow-left-long"></i></a>
-                    <img className="important" src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />
+                    <i class="fa-regular fa-star"onClick={() => onStarClicked()}></i>
                     <a onClick={this.onMarkRead}><i className="fa-solid fa-envelope" ></i></a>
                     <a onClick={() => this.onRemoveEmail(email.id)}><i className="fa-solid fa-trash"></i></a>
                 </div>

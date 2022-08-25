@@ -7,6 +7,7 @@ export const EmailService = {
     starClick,
     remove,
     markRead,
+    sendEmail
 
 }
 
@@ -25,7 +26,8 @@ const data = [
         isRead: false, 
         isImportant: false,
         sentAt : 1551133930594, 
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        isSent: false
     },
     {
         id: 'e1012', 
@@ -34,7 +36,8 @@ const data = [
         isRead: true, 
         isImportant: false,
         sentAt : 1551243930594, 
-        to: 'popo@momo.com'
+        to: 'popo@momo.com',
+        isSent: false
     },
     {
         id: 'e1013', 
@@ -43,7 +46,8 @@ const data = [
         isRead: false, 
         isImportant: false,
         sentAt : 1551133510594, 
-        to: 'toto@momo.com'
+        to: 'toto@momo.com',
+        isSent: false
     },
     {
         id: 'e1014', 
@@ -52,7 +56,8 @@ const data = [
         isRead: true, 
         isImportant: false,
         sentAt : 1551133510594, 
-        to: 'nono@momo.com'
+        to: 'nono@momo.com',
+        isSent: false
     },
     {
         id: 'e1015', 
@@ -61,7 +66,8 @@ const data = [
         isRead: false, 
         isImportant: false,
         sentAt : 1551133510594, 
-        to: 'koko@momo.com'
+        to: 'koko@momo.com',
+        isSent: false
     }
 ]
 
@@ -99,6 +105,16 @@ function markRead(emailId){
     return Promise.resolve(emails)
 }
 
+function sendEmail(email){
+    const sentMail =_createEmail(email)
+    let emails = _loadFromStorage()
+    emails.push(sentMail)
+    _saveToStorage(emails)
+    
+    return Promise.resolve()
+    
+}
+
 function _createEmail(email) {    
     const newEmail = {
         id: utilService.makeId(),
@@ -107,9 +123,9 @@ function _createEmail(email) {
         isRead: (utilService.getRandomIntInclusive(1, 100) >= 50) ? true : false, 
         sentAt: email.sentAt,
         isImportant: false,
-        to: email.to
+        to: email.to,
+        isSent: email.isSent
     }
-    
     return newEmail
 }
 

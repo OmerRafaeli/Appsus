@@ -35,7 +35,7 @@ export function EmailPreview({ email }) {
     return <article className={`email-preview ${markUnread()}`}>
         <input type="checkBox" />
         <div className="important">
-            <img src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />
+        <i className="fa-regular fa-star"onClick={() => onStarClicked()}></i>
         </div>
         <Link className="email-container" to={"/mail/" + email.id}>
             <h3>{email.to}</h3>

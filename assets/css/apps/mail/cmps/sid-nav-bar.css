@@ -13,3 +13,14 @@
     height: auto;
     cursor: pointer;
 }
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    margin-left: 15%;
+}
+
+.filter a{
+    margin-top: 15px;
+}

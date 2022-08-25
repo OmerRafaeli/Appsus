@@ -18,7 +18,7 @@ export class MailIndex extends React.Component {
     }
 
     onRemoveEmail = (emailId) => {
-        carService.remove(emailId)
+        EmailService.remove(emailId)
             .then(() => {
                 console.log('Removed!')
                 const emails = this.state.emails.filter(email => email.id !== emailId)
