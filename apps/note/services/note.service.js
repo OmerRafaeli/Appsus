@@ -10,7 +10,9 @@ export const noteService = {
     changeNoteColor,
     editTxt,
     createTodo,
-    addTodo
+    addTodo,
+    editTodo,
+    getTodoById
 }
 
 const KEY = 'notesDB'
@@ -140,6 +142,17 @@ function creatNote(type, txt, todos = []) {
     return Promise.resolve(note)
 }
 
+function getTodoById(noteId,todoId) {
+    if (!noteId) return Promise.resolve(null)
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+   
+    const { todos } = note.info
+    const todo = todos.find(todo => todo.id === todoId)
+
+    return Promise.resolve(todo)
+}
+
 function createTodo(txt) {
     return {
         id: utilService.makeId(5),
@@ -156,6 +169,18 @@ function addTodo(todo, noteId) {
     const note = notes.find(note => note.id === noteId)
     const { todos } = note.info
     todos.unshift(todo)
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function editTodo(txt, noteId, todoId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    const { todos } = note.info
+    const todo = todos.find(todo => todo.id === todoId)
+    todo.txt = txt
     _saveToStorage(notes)
     return Promise.resolve(note)
 }

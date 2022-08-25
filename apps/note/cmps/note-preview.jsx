@@ -24,9 +24,15 @@ export class NotePreview extends React.Component {
 
 
 
-    onChangeTxt = (textContent, noteId) => {
-        noteService.editTxt(textContent, noteId)
-            .then(() => this.loadNote())
+    onChangeTxt = (textContent, noteId, noteType, todoId) => {
+        if (noteType === 'note-txt') {
+            noteService.editTxt(textContent, noteId)
+                .then(() => this.loadNote())
+        } else if ((noteType === 'note-todos')) {
+            console.log('textContent:', textContent)
+            noteService.editTodo(textContent, noteId, todoId)
+                .then(() => this.loadNote())
+        }
     }
 
     onAddTodo = (todo, noteId) => {
@@ -37,6 +43,9 @@ export class NotePreview extends React.Component {
     onChangeColor = (backgroundColor, noteId) => {
         noteService.changeNoteColor(backgroundColor, noteId)
             .then(() => this.loadNote())
+    }
+
+    onTodoIsDone = () => {
 
     }
 
@@ -47,7 +56,7 @@ export class NotePreview extends React.Component {
         const { onRemoveNote, onAddNote } = this.props
         const { txt, url } = note.info
         const { backgroundColor } = note
-        const { onChangeTxt, onChangeColor, onAddTodo } = this
+        const { onChangeTxt, onChangeColor, onAddTodo, onTodoIsDone } = this
         console.log('backgroundColor:', backgroundColor)
         function DynamicCmp() {
             switch (note.type) {
@@ -56,7 +65,9 @@ export class NotePreview extends React.Component {
                 case 'note-img':
                     return <NoteImg note={note} url={url} />
                 case 'note-todos':
-                    return <NoteTodos note={note} onAddTodo={onAddTodo} />
+                    return <NoteTodos note={note} onAddTodo={onAddTodo}
+                        onChangeTxt={onChangeTxt}
+                        onTodoIsDone={onTodoIsDone} />
                 case 'note-video':
                     return <NoteVideo note={note} url={url} />
             }

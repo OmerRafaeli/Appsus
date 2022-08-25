@@ -10,12 +10,8 @@ export class NoteTxt extends React.Component {
     handleChange = (ev) => {
         const { textContent } = ev.target
         const { note } = this.props
-        // console.log('textContent:', textContent)
-        // this.setState({ txt: textContent }, () => {
-        this.props.onChangeTxt(textContent, note.id)
-        // })
 
-        // console.log('this.state.txt:', this.state.txt)
+        this.props.onChangeTxt(textContent, note.id, note.type)
     }
 
     render() {
