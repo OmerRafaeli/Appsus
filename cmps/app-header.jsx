@@ -18,10 +18,10 @@ export function AppHeader() {
         {/* <input className="header-search" type="search" placeholder="Search Here..." /> */}
 
         <nav className="header-nav-bar">
-            <NavLink to="/mail"><img  className="icon-btn" src="../assets/img/mailIcon.svg" alt="" /></NavLink>
-            <NavLink to="/note"><img  className="icon-btn" src="../assets/img/keepIcon.svg" alt="" /></NavLink>
-            <NavLink exact to="/"><img className="icon-btn" src="../assets/img/homeIcon.svg" alt="" /></NavLink>
-            <NavLink to="/about"><img  className="icon-btn" src="../assets/img/aboutIcon.svg" alt="" /></NavLink>
+            <NavLink to="/mail"><img  className="icon-btn" src="assets/img/mailIcon.svg" alt="" /></NavLink>
+            <NavLink to="/note"><img  className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></NavLink>
+            <NavLink exact to="/"><img className="icon-btn" src="assets/img/homeIcon.svg" alt="" /></NavLink>
+            <NavLink to="/about"><img  className="icon-btn" src="assets/img/aboutIcon.svg" alt="" /></NavLink>
         </nav>
         {/* <div className="app-menu-icon">
             <img src="../assets/img/appMenuIcon.svg" alt="" />
