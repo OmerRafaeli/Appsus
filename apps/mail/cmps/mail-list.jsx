@@ -1,7 +1,7 @@
 import { EmailPreview } from "./email-preview.jsx"
 // const { Link } = ReactRouterDOM
 
-export function MailList({ emails}) {
+export function MailList({ emails }) {
 
     return <section className="mail-list-container">
         <div className="email-preview-panel">
@@ -11,7 +11,7 @@ export function MailList({ emails}) {
         </div>
         <ul>
             {emails.map(email => <li key={email.id} className="clean-list">
-                <EmailPreview email={email}/>
+                <EmailPreview email={email} />
             </li>
             )}
         </ul>
