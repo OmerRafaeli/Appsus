@@ -8,8 +8,8 @@ export class MailIndex extends React.Component {
         emails: [],
     }
 
-    componentDidMount(){
-        this.loadEmails()       
+    componentDidMount() {
+        this.loadEmails()
     }
 
     loadEmails = () => {
@@ -17,12 +17,28 @@ export class MailIndex extends React.Component {
             .then((emails) => this.setState({ emails }))
     }
 
+    onRemoveEmail = (emailId) => {
+        carService.remove(emailId)
+            .then(() => {
+                console.log('Removed!')
+                const emails = this.state.emails.filter(email => email.id !== emailId)
+                this.setState({ emails })
+                showSuccessMsg('email removed')
+
+            })
+            .catch(err => {
+                console.log('Problem!!', err)
+                showErrorMsg('Cannot remove email')
+            })
+    }
+
+
     render() {
-        const {emails} = this.state
+        const { emails } = this.state
         return (
             <section className="mail-index-container">
                 <SideNav />
-                <MailList emails={emails}/>
+                <MailList emails={emails} onRemoveEmail={this.onRemoveEmail}/>
             </section>
         )
     }

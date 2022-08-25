@@ -2,9 +2,13 @@
     margin-top: 35px;
     height: 90vh;
     padding: 10px;    
-    /* margin-inline-end: 35px; */
+    margin-inline-end: 15px;
     background-color: #fefeff;
     font-size: 1em;
     border-radius: 25px;
     flex-grow: 9;
+}
+
+.mail-list-container ul{
+    padding-left: 15px;
 }

@@ -30,6 +30,7 @@ header {
 nav a {
     margin: .5em;
     justify-self: end;
+    justify-content: center;
 }
 
 nav a:active {
@@ -40,4 +41,16 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.icon-btn{
+    width: 30px;
+    height: auto;
+}
+
+.header-nav-bar{
+    margin-inline-end: 25px;
+    transform: scaleX(1);
+    transform-origin: right;
+    transition: transform .6s;
 }

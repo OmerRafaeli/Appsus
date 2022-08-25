@@ -10,6 +10,7 @@ export class EmailDetails extends React.Component {
 
     componentDidMount() {
         this.loadEmail()
+        // this.onMarkRead()
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -18,19 +19,35 @@ export class EmailDetails extends React.Component {
         }
     }
 
+    onMarkRead = () => {
+        const {emailId} = this.props.match.params
+        // console.log('emailId:', emailId)        
+        EmailService.markRead(emailId)
+            .then((email) => {
+                this.setState({ email })
+                this.onGoBack()
+            })
+    }
+
     loadEmail = () => {
         const { emailId } = this.props.match.params
 
         EmailService.getById(emailId)
             .then((email) => {
                 this.setState({ email })
-                console.log('email:', email)                
             })
-        // console.log('email:', email)
     }
 
     onGoBack = () => {
         this.props.history.push('/mail')
+    }
+
+    onRemoveEmail = (emailId) => {
+        EmailService.remove(emailId)
+            .then((email) => {
+                this.setState({ email })
+                this.onGoBack()
+            })
     }
 
     render() {
@@ -39,13 +56,17 @@ export class EmailDetails extends React.Component {
         return <section className="email-details-container">
             <SideNav />
             <div className="email-details">
+                <div className="email-nav">
+                    <a className="go-back-btn" onClick={this.onGoBack}><i className="fa-solid fa-arrow-left-long"></i></a>
+                    <img className="important" src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />
+                    <a onClick={this.onMarkRead}><i className="fa-solid fa-envelope" ></i></a>
+                    <a onClick={() => this.onRemoveEmail(email.id)}><i className="fa-solid fa-trash"></i></a>
+                </div>
                 <h1>Sent To: {email.to}</h1>
-                <p>Subject: {email.subject}</p>
-                <p>{email.body}</p>
+                <hr />
+                <p className="email-subject">Subject: {email.subject}</p>
+                <p className="email-body">{email.body}</p>
             </div>
-            <a className="go-back-btn fa-solid fa-palette" onClick={this.onGoBack} >Back</a>
-            
-            
         </section>
     }
 }
