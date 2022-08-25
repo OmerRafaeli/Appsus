@@ -47,7 +47,8 @@ export class NoteIndex extends React.Component {
     onChangeNotePin = (noteId) => {
         // console.log('note:', note)
         noteService.changeNotePin(noteId)
-        .then((notes) => this.setState({ notes}))
+            .then((notes) => this.setState({ ...this.state, notes }))
+           
     }
 
     render() {

@@ -1,5 +1,47 @@
-
-
-.add-note .btns-input *{
-    cursor: pointer;
+.add-note{
+    margin-bottom: 50px;
 }
+
+.note-input{
+    display: flex;
+    justify-content: center;
+}
+
+
+.note-input form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 25rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    box-shadow:-2px 1px 4px 1px #b9aeae;;;
+    border: 1px solid lightgray;
+}
+
+
+.add-note [name=add-note] {
+    border: none;
+    font-size: 1rem;
+}
+
+.add-note .btns-input * {
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    background-color: white;
+    color: rgb(87, 85, 85);
+    margin-inline-end: 10px;
+}
+
+.add-note .btns-input *:hover{
+    color: rgb(14, 13, 13);
+    transition: color .5s;
+}
+
+
+
+
+
+

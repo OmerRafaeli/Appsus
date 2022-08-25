@@ -67,13 +67,13 @@ export class AddNote extends React.Component {
                         placeholder={enterTxt}
                         value={txt}
                         onChange={onHandleChange} />
-                </form>
                 <div className="btns-input">
                     <button onClick={() => onGetType('note-txt')}><i className="fa-solid fa-font"></i></button>
                     <button onClick={() => onGetType('note-img')}><i className="fa-solid fa-image"></i></button>
                     <button onClick={() => onGetType('note-todos')}><i className="fa-solid fa-list"></i></button>
                     <button onClick={() => onGetType('note-video')}><i className="fa-solid fa-video"></i></button>
                 </div>
+                </form>
             </div>
         </section>
     }

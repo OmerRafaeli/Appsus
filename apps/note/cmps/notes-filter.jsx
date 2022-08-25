@@ -41,12 +41,12 @@ export class NotesFilter extends React.Component {
         const { title, type } = this.state.filterBy
         const { onGetValue, onHandleChange } = this
         return <section className="notes-filter">
-            <label htmlFor="search-note-title"></label>
+            {/* <label htmlFor="search-note-title"></label>
             <input type="search"
                 id="search-note-title"
                 placeholder="Search Book By Title"
                 value={title}
-                onChange={onHandleChange} />
+                onChange={onHandleChange} /> */}
             <label htmlFor="search-note-type">Search By Type</label>
             <select name="search-note-type" id="search-note-type"
                 onChange={onGetValue}>
