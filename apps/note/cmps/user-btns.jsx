@@ -1,3 +1,4 @@
+import { noteService } from "../services/note.service.js"
 
 
 export class UserBtns extends React.Component {
@@ -11,22 +12,43 @@ export class UserBtns extends React.Component {
     }
     onGetColor = (ev) => {
         const { backgroundColor } = ev.target.style
+
+        const { note } = this.props
         this.setState({ isColorOn: !this.state.isColorOn })
-        this.props.onChangeColor(backgroundColor)
-        console.log('backgroundColor:', backgroundColor)
+        this.props.onChangeColor(backgroundColor, note.id)
     }
 
+    onDuplicateNote = () => {
+        const { note } = this.props
+        const { type } = note
+        if (type === 'note-video' || type === 'note-img') {
+            noteService.creatNote(type, note.info.url)
+                .then(note => {
+                    this.props.onAddNote(note)
+                })
+        } else if (type === 'note-todos') {
+            noteService.creatNote(type, note.info.title, note.info.todos)
+                .then(note => {
+                    this.props.onAddNote(note)
+                })
+        } else {
+            noteService.creatNote(type, note.info.txt)
+                .then(note => {
+                    this.props.onAddNote(note)
+                })
+        }
 
-
+    }
 
     render() {
 
-        const { onShowColors, onGetColor } = this
+        const { onShowColors, onGetColor, onDuplicateNote } = this
         const { isColorOn } = this.state
-        const { note,onRemoveNote } = this.props
+        const { note, onRemoveNote } = this.props
+        // console.log('note:', note)
         // console.log('isColorOn:', isColorOn)
         return <section className="user-btns">
-            <i className="fa-solid fa-paste"></i>
+            <div onClick={onDuplicateNote}><i className="fa-solid fa-paste"></i></div>
             <div onClick={onShowColors}><i className="fa-solid fa-palette" ></i></div>
             <div onClick={() => onRemoveNote(note.id)}> <i className="fa-solid fa-trash"></i></div>
             {isColorOn && <div className="color-pick">

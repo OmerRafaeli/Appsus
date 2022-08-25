@@ -22,49 +22,41 @@ export class NotePreview extends React.Component {
             .then(note => { this.setState({ note }) })
     }
 
-    onSetTxt = (userTxt) => {
 
-        this.setState((prevState) => ({
-            note: {
-                ...prevState.note,
-                info: {
-                    ...prevState.note.info,
-                    txt: userTxt
-                }
-            }
-        }), () => {
-            this.loadNote()
-        })
-        // console.log('this.state.txt:', this.state.txt)
-        // console.log('userTxt:', userTxt)
+
+    onChangeTxt = (textContent, noteId) => {
+        noteService.editTxt(textContent, noteId)
+            .then(() => this.loadNote())
     }
 
-    onChangeColor = (backgroundColor) => {
-        // console.log('backgroundColor:', backgroundColor)
-        const { note } = this.state
-        this.setState({ backgroundColor }, () => {
-            this.loadNote()
-        })
-        console.log('note from color:', note)
+    onAddTodo = (todo, noteId) => {
+        noteService.addTodo(todo, noteId)
+            .then(() => this.loadNote())
+    }
+
+    onChangeColor = (backgroundColor, noteId) => {
+        noteService.changeNoteColor(backgroundColor, noteId)
+            .then(() => this.loadNote())
+
     }
 
     render() {
         const { note } = this.state
         if (!note) return
         // console.log('this.state.note:', this.state.note)
-        const { onRemoveNote } = this.props
+        const { onRemoveNote, onAddNote } = this.props
         const { txt, url } = note.info
         const { backgroundColor } = note
-        const { onSetTxt, onChangeColor } = this
+        const { onChangeTxt, onChangeColor, onAddTodo } = this
         console.log('backgroundColor:', backgroundColor)
         function DynamicCmp() {
             switch (note.type) {
                 case 'note-txt':
-                    return <NoteTxt onSetTxt={onSetTxt} note={note} txt={txt} />
+                    return <NoteTxt onChangeTxt={onChangeTxt} note={note} txt={txt} />
                 case 'note-img':
                     return <NoteImg note={note} url={url} />
                 case 'note-todos':
-                    return <NoteTodos note={note} />
+                    return <NoteTodos note={note} onAddTodo={onAddTodo} />
                 case 'note-video':
                     return <NoteVideo note={note} url={url} />
             }
@@ -75,7 +67,8 @@ export class NotePreview extends React.Component {
             <DynamicCmp />
             <UserBtns note={note}
                 onChangeColor={onChangeColor}
-                onRemoveNote={onRemoveNote} />
+                onRemoveNote={onRemoveNote}
+                onAddNote={onAddNote} />
         </section>
     }
 }
