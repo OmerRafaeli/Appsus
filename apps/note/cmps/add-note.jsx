@@ -36,18 +36,18 @@ export class AddNote extends React.Component {
     }
 
     onCreateNote = (type, txt) => {
-      
+        if (!txt) return
         // console.log('type:', type)
         // console.log('txt:', txt)
         noteService.creatNote(type, txt)
-            .then(note =>{
+            .then(note => {
                 this.props.onAddNote(note)
             })
-            this.setState({
-                enterTxt: 'Add a new Note',
-                type: 'note-txt',
-                txt: ''
-            })
+        this.setState({
+            enterTxt: 'Add a new Note',
+            type: 'note-txt',
+            txt: ''
+        })
     }
 
 

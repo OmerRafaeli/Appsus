@@ -19,7 +19,7 @@ export class NoteTxt extends React.Component {
         const { txt } = this.state
 
         return <section className="note-txt">
-            <div contentEditable='true' onBlur={this.handleChange}>
+            <div contentEditable='true' suppressContentEditableWarning onBlur={this.handleChange}>
 
                 {txt}
             </div>

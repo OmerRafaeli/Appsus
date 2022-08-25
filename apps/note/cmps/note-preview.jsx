@@ -22,14 +22,12 @@ export class NotePreview extends React.Component {
             .then(note => { this.setState({ note }) })
     }
 
-
-
     onChangeTxt = (textContent, noteId, noteType, todoId) => {
         if (noteType === 'note-txt') {
             noteService.editTxt(textContent, noteId)
                 .then(() => this.loadNote())
         } else if ((noteType === 'note-todos')) {
-            console.log('textContent:', textContent)
+            // console.log('textContent:', textContent)
             noteService.editTodo(textContent, noteId, todoId)
                 .then(() => this.loadNote())
         }
@@ -45,19 +43,28 @@ export class NotePreview extends React.Component {
             .then(() => this.loadNote())
     }
 
-    onTodoIsDone = () => {
+    onTodoIsDone = (checked, todoId, noteId) => {
 
+        noteService.todoIsDone(checked, todoId, noteId)
+            .then(() => this.loadNote())
     }
 
+    onRemoveTodo = (todoId, noteId) => {
+        noteService.removeTodo(todoId, noteId)
+            .then(() => this.loadNote())
+    }
+
+    
     render() {
         const { note } = this.state
         if (!note) return
         // console.log('this.state.note:', this.state.note)
-        const { onRemoveNote, onAddNote } = this.props
+        const { onRemoveNote, onAddNote ,onChangeNotePin} = this.props
         const { txt, url } = note.info
         const { backgroundColor } = note
-        const { onChangeTxt, onChangeColor, onAddTodo, onTodoIsDone } = this
-        console.log('backgroundColor:', backgroundColor)
+        const { onChangeTxt, onChangeColor, onAddTodo,
+             onTodoIsDone, onRemoveTodo } = this
+        // console.log('backgroundColor:', backgroundColor)
         function DynamicCmp() {
             switch (note.type) {
                 case 'note-txt':
@@ -67,7 +74,8 @@ export class NotePreview extends React.Component {
                 case 'note-todos':
                     return <NoteTodos note={note} onAddTodo={onAddTodo}
                         onChangeTxt={onChangeTxt}
-                        onTodoIsDone={onTodoIsDone} />
+                        onTodoIsDone={onTodoIsDone}
+                        onRemoveTodo={onRemoveTodo} />
                 case 'note-video':
                     return <NoteVideo note={note} url={url} />
             }
@@ -79,7 +87,9 @@ export class NotePreview extends React.Component {
             <UserBtns note={note}
                 onChangeColor={onChangeColor}
                 onRemoveNote={onRemoveNote}
-                onAddNote={onAddNote} />
+                onAddNote={onAddNote}
+                onChangeNotePin={onChangeNotePin}
+            />
         </section>
     }
 }

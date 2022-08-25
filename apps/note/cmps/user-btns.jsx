@@ -40,14 +40,23 @@ export class UserBtns extends React.Component {
 
     }
 
+    onTogglePin = () => {
+        const { note } = this.props
+        note.isPined = !note.isPined
+        this.props.onChangeNotePin(note.id)
+
+
+    }
+
     render() {
 
-        const { onShowColors, onGetColor, onDuplicateNote } = this
+        const { onShowColors, onGetColor, onDuplicateNote, onTogglePin } = this
         const { isColorOn } = this.state
         const { note, onRemoveNote } = this.props
         // console.log('note:', note)
         // console.log('isColorOn:', isColorOn)
         return <section className="user-btns">
+            <div onClick={onTogglePin}><i className="fa-solid fa-thumbtack"></i></div>
             <div onClick={onDuplicateNote}><i className="fa-solid fa-paste"></i></div>
             <div onClick={onShowColors}><i className="fa-solid fa-palette" ></i></div>
             <div onClick={() => onRemoveNote(note.id)}> <i className="fa-solid fa-trash"></i></div>

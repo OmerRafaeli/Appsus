@@ -9,7 +9,9 @@
 @import 'cmps/note-video.css';
 @import 'cmps/note-img.css';
 @import 'cmps/user-btns.css';
+@import 'cmps/note-todos.css';
 @import 'cmps/add-note.css';
+@import 'cmps/todo-preview.css';
 
 /* MQ */
 @import './mq.css';

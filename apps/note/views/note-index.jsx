@@ -1,11 +1,13 @@
 import { AddNote } from '../cmps/add-note.jsx';
 import { NoteList } from '../cmps/note-list.jsx';
+import { NotesFilter } from '../cmps/notes-filter.jsx';
 import { noteService } from '../services/note.service.js';
 
 export class NoteIndex extends React.Component {
 
     state = {
-        notes: []
+        notes: [],
+        filterBy: null
     }
 
     componentDidMount() {
@@ -13,11 +15,18 @@ export class NoteIndex extends React.Component {
     }
 
     loadNotes = () => {
-        noteService.query()
+        noteService.query(this.state.filterBy)
             .then(notes => {
                 this.setState({ notes })
                 // console.log('notes:', notes)
             })
+    }
+
+    onSetFilter = (filterBy) => {
+        console.log('filterBy:', filterBy)
+        this.setState({ filterBy }, () => {
+            this.loadNotes()
+        })
     }
 
     onAddNote = (note) => {
@@ -35,18 +44,21 @@ export class NoteIndex extends React.Component {
                 // showSuccessMsg('Note removed')
             })
     }
-
-    // addDuplicateNote = (note) => {
-    //     console.log('note duplicate:', note)
-    // }
+    onChangeNotePin = (noteId) => {
+        // console.log('note:', note)
+        noteService.changeNotePin(noteId)
+        .then((notes) => this.setState({ notes}))
+    }
 
     render() {
         const { notes } = this.state
         return <section className="note-index">
+            <NotesFilter onSetFilter={this.onSetFilter} />
             <AddNote onAddNote={this.onAddNote} />
             <NoteList notes={notes}
                 onRemoveNote={this.onRemoveNote}
-                onAddNote={this.onAddNote} />
+                onAddNote={this.onAddNote}
+                onChangeNotePin={this.onChangeNotePin} />
         </section>
 
     }
