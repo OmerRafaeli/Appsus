@@ -5,7 +5,7 @@ export class AddNote extends React.Component {
 
     state = {
         enterTxt: 'Add a new Note',
-        type: null,
+        type: 'note-txt',
         txt: null
     }
 
@@ -36,7 +36,7 @@ export class AddNote extends React.Component {
     }
 
     onCreateNote = (type, txt) => {
-        if (!type) return
+      
         // console.log('type:', type)
         // console.log('txt:', txt)
         noteService.creatNote(type, txt)
@@ -45,7 +45,7 @@ export class AddNote extends React.Component {
             })
             this.setState({
                 enterTxt: 'Add a new Note',
-                type: null,
+                type: 'note-txt',
                 txt: ''
             })
     }
@@ -55,7 +55,7 @@ export class AddNote extends React.Component {
         const { onGetType, onHandleChange, onCreateNote } = this
         const { enterTxt, type, txt } = this.state
         // const { onAddNote } = this.props
-        console.log('enterTxt:', enterTxt)
+        // console.log('enterTxt:', enterTxt)
         // console.log('type:', type)
         return <section className="add-note">
             <div className="note-input">

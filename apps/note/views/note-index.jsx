@@ -23,7 +23,7 @@ export class NoteIndex extends React.Component {
     onAddNote = (note) => {
         // console.log('note:', note)
         noteService.addNote(note)
-        .then(note => this.setState({ notes: [note, ...this.state.notes] }))
+            .then(note => this.setState({ notes: [note, ...this.state.notes] }))
     }
 
     onRemoveNote = (noteId) => {
@@ -36,12 +36,17 @@ export class NoteIndex extends React.Component {
             })
     }
 
+    // addDuplicateNote = (note) => {
+    //     console.log('note duplicate:', note)
+    // }
+
     render() {
         const { notes } = this.state
         return <section className="note-index">
             <AddNote onAddNote={this.onAddNote} />
             <NoteList notes={notes}
-                onRemoveNote={this.onRemoveNote} />
+                onRemoveNote={this.onRemoveNote}
+                onAddNote={this.onAddNote} />
         </section>
 
     }

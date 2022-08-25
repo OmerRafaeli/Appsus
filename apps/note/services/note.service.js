@@ -6,7 +6,13 @@ export const noteService = {
     getNoteById,
     removeNote,
     creatNote,
-    addNote
+    addNote,
+    changeNoteColor,
+    editTxt,
+    createTodo,
+    addTodo,
+    editTodo,
+    getTodoById
 }
 
 const KEY = 'notesDB'
@@ -37,11 +43,15 @@ const gNotes = [
         info: {
             title: 'Get my stuff together',
             todos: [{
+                id: utilService.makeId(5),
                 txt: 'Driving liscence',
+                isDone: false,
                 doneAt: null
             },
             {
+                id: utilService.makeId(5),
                 txt: 'Coding power',
+                isDone: false,
                 doneAt: 187111111
             }]
         }
@@ -80,9 +90,30 @@ function removeNote(noteId) {
     notes = notes.filter(note => note.id !== noteId)
     _saveToStorage(notes)
     return Promise.resolve()
+
 }
 
-function addNote(note){
+function changeNoteColor(bgColor, noteId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    note.backgroundColor = bgColor
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function editTxt(txt, noteId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    note.info.txt = txt
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function addNote(note) {
     let notes = _loadFromStorage()
     if (!notes) {
         notes = gNotes
@@ -92,7 +123,7 @@ function addNote(note){
     return Promise.resolve(note)
 }
 
-function creatNote(type, txt) {
+function creatNote(type, txt, todos = []) {
     let note
     switch (type) {
         case 'note-txt':
@@ -102,12 +133,55 @@ function creatNote(type, txt) {
             note = _creatImgNote(txt)
             break
         case 'note-todos':
-            note = _creatTodoNote(txt)
+            note = _creatTodoNote(txt, todos)
             break
         case 'note-video':
             note = _creatVideoNote(txt)
             break
     }
+    return Promise.resolve(note)
+}
+
+function getTodoById(noteId,todoId) {
+    if (!noteId) return Promise.resolve(null)
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+   
+    const { todos } = note.info
+    const todo = todos.find(todo => todo.id === todoId)
+
+    return Promise.resolve(todo)
+}
+
+function createTodo(txt) {
+    return {
+        id: utilService.makeId(5),
+        txt,
+        isDone: false,
+        doneAt: null
+    }
+}
+
+function addTodo(todo, noteId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    const { todos } = note.info
+    todos.unshift(todo)
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function editTodo(txt, noteId, todoId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    const { todos } = note.info
+    const todo = todos.find(todo => todo.id === todoId)
+    todo.txt = txt
+    _saveToStorage(notes)
     return Promise.resolve(note)
 }
 
@@ -135,14 +209,14 @@ function _creatImgNote(txt) {
     }
 }
 
-function _creatTodoNote(txt) {
+function _creatTodoNote(txt, todos) {
     return {
         id: utilService.makeId(5),
         type: 'note-todos',
         backgroundColor: utilService.getRandomColor(),
         info: {
             title: txt,
-            todos: []
+            todos
         }
     }
 }
