@@ -10,12 +10,23 @@ export class EmailDetails extends React.Component {
 
     componentDidMount() {
         this.loadEmail()
+        // this.onMarkRead()
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.emailId !== this.props.match.params.emailId) {
             this.loadEmail()
         }
+    }
+
+    onMarkRead = () => {
+        const {emailId} = this.props.match.params
+        // console.log('emailId:', emailId)        
+        EmailService.markRead(emailId)
+            .then((email) => {
+                this.setState({ email })
+                this.onGoBack()
+            })
     }
 
     loadEmail = () => {
@@ -31,6 +42,14 @@ export class EmailDetails extends React.Component {
         this.props.history.push('/mail')
     }
 
+    onRemoveEmail = (emailId) => {
+        EmailService.remove(emailId)
+            .then((email) => {
+                this.setState({ email })
+                this.onGoBack()
+            })
+    }
+
     render() {
         const { email } = this.state
         if (!email) return <div>Loading...</div>
@@ -40,8 +59,8 @@ export class EmailDetails extends React.Component {
                 <div className="email-nav">
                     <a className="go-back-btn" onClick={this.onGoBack}><i className="fa-solid fa-arrow-left-long"></i></a>
                     <img className="important" src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />
-                    <a><i className="fa-solid fa-envelope"></i></a>
-                    <a><i className="fa-solid fa-trash"></i></a>
+                    <a onClick={this.onMarkRead}><i className="fa-solid fa-envelope" ></i></a>
+                    <a onClick={() => this.onRemoveEmail(email.id)}><i className="fa-solid fa-trash"></i></a>
                 </div>
                 <h1>Sent To: {email.to}</h1>
                 <hr />

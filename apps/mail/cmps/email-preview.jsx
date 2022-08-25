@@ -14,6 +14,11 @@ export function EmailPreview({ email }) {
 
     }
 
+    function markUnread (){
+        if(email.isRead) return 'read-email'
+        else return 'unread-email'
+    }
+
     function onStarClicked() {
         EmailService.starClick(email.id)
 
@@ -27,7 +32,7 @@ export function EmailPreview({ email }) {
 
 
 
-    return <article className="email-preview">
+    return <article className={`email-preview ${markUnread()}`}>
         <input type="checkBox" />
         <div className="important">
             <img src="assets/img/importantUnmarked.svg" alt="" onClick={() => onStarClicked()} />

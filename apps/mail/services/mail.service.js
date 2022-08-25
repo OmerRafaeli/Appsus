@@ -5,7 +5,8 @@ export const EmailService = {
     query,
     getById,
     starClick,
-    // remove,
+    remove,
+    markRead,
 
 }
 
@@ -77,16 +78,26 @@ function query() {
 function getById(emailId) {
     if (!emailId) return Promise.resolve(null)
     const emails = _loadFromStorage()
-    const email = emails.find(email => emailId === email.id)
+    const email = emails.find(email => email.id === emailId)
     return Promise.resolve(email)
 }
 
-// function remove(emailId){
-//     let email = _loadFromStorage()
-//     emails = emails.filter(email => emailId !== email.id)
-//     _saveToStorage()
-//     return Promise.resolve()
-// }
+function remove(emailId){
+    let emails = _loadFromStorage()
+    emails = emails.filter(email => email.id !== emailId)
+    _saveToStorage(emails)
+    return Promise.resolve(emails)
+}
+
+function markRead(emailId){
+    let emails = _loadFromStorage()
+    const idx = emails.findIndex(email => email.id === emailId)
+    emails[idx].isRead = !emails[idx].isRead
+    console.log('emails:', emails[idx])
+    _saveToStorage(emails)
+    
+    return Promise.resolve(emails)
+}
 
 function _createEmail(email) {    
     const newEmail = {
