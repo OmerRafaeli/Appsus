@@ -1,5 +1,5 @@
 import { EmailService } from "../services/mail.service.js"
-import { eventBusService } from '../../../services/event-bus.service.js'
+import { createNote, eventBusService } from '../../../services/event-bus.service.js'
 const { Link } = ReactRouterDOM
 
 export class Compose extends React.Component {
@@ -22,7 +22,7 @@ export class Compose extends React.Component {
     componentDidMount() {
         const { emailContent } = this.state
         this.unsubscribe = eventBusService.on('note-to-mail', (note) => {
-          
+            
             // this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
         })
     }
@@ -42,8 +42,11 @@ export class Compose extends React.Component {
                 ...prevState.emailContent,
                 [field]: value
             }
-        }),() =>{ console.log(this.state.emailContent)}
-        )
+        }))
+    }
+
+    onCreateNote = (email) => {        
+        createNote(email)
     }
 
     render() {
@@ -79,7 +82,7 @@ export class Compose extends React.Component {
                 onChange={this.handleChange}
             />
             <button>Send</button>
-            <Link to={"/note"} ><img  className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
+            <Link to={"/note"} onClick={()=> this.onCreateNote({subject, body})}><img className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
         </form>
     }
 
