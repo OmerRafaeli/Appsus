@@ -29,16 +29,15 @@ export function showErrorMsg(txt) {
     showUserMsg({ txt, type: 'error' })
 }
 
-
 export function createEmail(note) {
     const { txt } = note.info
     eventBusService.emit('note-to-mail', note)
     // console.log('txt:', txt)
 }
 
-
-export function createNote(){
-    eventBusService.emit('mail-to-note', note)
+export function createNote(email){
+    const {subject, body} = email
+    eventBusService.emit('mail-to-note', subject, body)
 }
 
 
