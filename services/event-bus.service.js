@@ -22,14 +22,6 @@ export function showUserMsg(msg) {
     eventBusService.emit('show-user-msg', msg)
 }
 
-export function createEmail(note) {
-    eventBusService.emit('note-to-mail', note)
-}
-
-export function createNote(email) {
-    eventBusService.emit('mail-to-note', email)
-}
-
 export function showSuccessMsg(txt) {
     showUserMsg({ txt, type: 'success' })
 }
@@ -37,16 +29,15 @@ export function showErrorMsg(txt) {
     showUserMsg({ txt, type: 'error' })
 }
 
-
 export function createEmail(note) {
     const { txt } = note.info
     eventBusService.emit('note-to-mail', note)
     // console.log('txt:', txt)
 }
 
-
-export function createNote(){
-    eventBusService.emit('mail-to-note', note)
+export function createNote(email){
+    const {subject, body} = email
+    eventBusService.emit('mail-to-note', subject, body)
 }
 
 

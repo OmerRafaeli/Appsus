@@ -23,7 +23,7 @@ export class Compose extends React.Component {
         const { emailContent } = this.state
         this.unsubscribe = eventBusService.on('note-to-mail', (note) => {
           
-            this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
+            // this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
         })
     }
 
