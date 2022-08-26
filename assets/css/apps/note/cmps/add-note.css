@@ -36,7 +36,7 @@
 .add-note .btns-input * {
     cursor: pointer;
     border: none;
-    font-size: 1rem;
+    font-size: 1.3rem;
     background-color: white;
     color: rgb(154, 146, 146);
     margin-inline-end: 10px;

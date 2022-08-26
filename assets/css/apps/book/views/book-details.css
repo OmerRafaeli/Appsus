@@ -13,7 +13,7 @@
     margin-bottom: 20px;
 }
 
-.book-details p{
+.book-details p {
     font-size: 1rem;
 }
 
@@ -39,23 +39,34 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap:10px;
+    gap: 10px;
 }
 
 .book-details button {
     cursor: pointer;
+
+    margin-bottom: 10px;
+    /* height: 2rem; */
+    padding: 0.7rem;
+    background-color: rgb(39, 37, 37);
+    color: whitesmoke;
+    border-radius: 8px;
     margin-bottom: 100px;
+}
+
+.book-details .btn-page>*{
+    margin-inline-end: 10px;
 }
 
 .book-details .sale {
     position: absolute;
     top: 5px;
-    right: 20%;
+    right: 63%;
     font-size: 1.5rem;
     color: green;
     font-weight: bold;
 }
 
-.book-details .long-text p{
+.book-details .long-text p {
     margin-bottom: 10px;
-}   
+}

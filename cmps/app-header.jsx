@@ -1,3 +1,5 @@
+import { UserMsg } from "./user-msg.jsx"
+
 const { Link, NavLink, withRouter } = ReactRouterDOM
 export function AppHeader() {
 
@@ -27,5 +29,6 @@ export function AppHeader() {
         {/* <div className="app-menu-icon">
             <img src="../assets/img/appMenuIcon.svg" alt="" />
         </div> */}
+        {/* <UserMsg/> */}
     </header>
 }

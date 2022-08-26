@@ -15,6 +15,6 @@ export function BooksPreview({ book, onRemoveBook }) {
                 <img src={`${book.thumbnail}`} alt="" />
             </div>
         </Link>
-        <button onClick={() => onRemoveBook(book.id)}>x</button>
+        <button onClick={() => onRemoveBook(book.id)}><i className="fa-solid fa-xmark"></i></button>
     </article>
 }

@@ -4,10 +4,13 @@
     position: absolute;
     top: 1em;
     right: 1em;
+    opacity: 0;
 }
 
 .user-msg.success {
     background-color: lightgreen;
+    opacity: 100;
+    transform: opacity .4s;
 }
 
 .user-msg.error {
@@ -18,4 +21,5 @@
 .user-msg button{
     float: right;
     margin: 1em;
+    display: none;
 }

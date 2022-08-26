@@ -78,6 +78,7 @@ export class BookDetails extends React.Component {
         return <section className="book-details main-layout full">
             <div className="book-details-container">
                 <article className="book-titles">
+                    {book.listPrice.isOnSale && <div className="sale">ON SALE!</div>}
                     <h3>Title: {book.title}</h3>
                     <h3>Subtitle: {book.subtitle}</h3>
                     <h3>Authors: {book.authors}</h3>
@@ -98,10 +99,11 @@ export class BookDetails extends React.Component {
                     <LongText text={book.description} />
                 </article>
             </div>
-            <Link to={`/book/${prevBookId}`}><button >Previous Book</button></Link>
-            <button onClick={this.onGoBack}>Go back</button>
-            <Link to={`/book/${nextBookId}`}><button >Next Book</button></Link>
-            {book.listPrice.isOnSale && <div className="sale">ON SALE!</div>}
+            <div className="btn-page">
+                <Link to={`/book/${prevBookId}`}><button >Previous Book</button></Link>
+                <button onClick={this.onGoBack}>Go back</button>
+                <Link to={`/book/${nextBookId}`}><button >Next Book</button></Link>
+            </div>
             <ReviewAdd bookId={book.id} loadBook={this.loadBook} />
         </section>
     }

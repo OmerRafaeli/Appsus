@@ -15,8 +15,14 @@
 }
 
 .books-preview button{
+    cursor: pointer;
     position: absolute; 
-    bottom: 10px;
-    left: 10px;
+    top: 10px;
+    right: 10px;
     margin-bottom: 10px; 
+    height: 1.5rem;
+    width: 1.1rem;
+    background-color: rgb(39, 37, 37);
+    color: whitesmoke;
+    border-radius: 5px;
 }
