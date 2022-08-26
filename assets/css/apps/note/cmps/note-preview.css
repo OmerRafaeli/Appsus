@@ -13,6 +13,7 @@
     border-radius: 15px;
     break-inside: avoid;
     line-break: anywhere;
+    transition: box-shadow .3s;
 }
 
 .note-preview:hover {

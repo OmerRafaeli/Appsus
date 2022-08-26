@@ -1,8 +1,28 @@
 
-.todo-preview input[type="checkbox"] {
-    float: left;
+.todo-preview{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.todo-preview span{
+    outline: none;
+    margin-left: -5px
+}
+
+.todo-preview input[type=checkbox]{
+    
+    margin-left: -10px;
+    
 }
 
 .done {
     text-decoration: line-through;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+}
+
+.todo-preview .btn-remove-todo{
+    cursor: pointer;
 }

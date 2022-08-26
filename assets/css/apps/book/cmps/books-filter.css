@@ -1,0 +1,16 @@
+
+
+.books-filter{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.books-filter [name=title]{
+    margin-inline-end: 20px;
+}
+
+.books-filter button{
+    cursor: pointer;
+}

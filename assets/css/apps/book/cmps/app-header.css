@@ -1,0 +1,44 @@
+header {
+    background-color: rgb(237, 107, 107);
+    margin-bottom: 20px;
+}
+
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.app-header h1{
+    cursor: pointer;
+}
+
+.app-header h1:hover{
+    color: whitesmoke;
+    transition:color .4s;
+}
+
+.app-header nav>*:not(:last-child) {
+    margin-inline-end: 40px;
+}
+
+.app-header nav>* {
+    cursor: pointer;
+}
+
+.app-header nav>*:hover {
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: font-weight .5s;
+    transition: font-size .5s;
+}
+
+.app-header nav .active {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: whitesmoke;
+    transition:color .5s;
+}

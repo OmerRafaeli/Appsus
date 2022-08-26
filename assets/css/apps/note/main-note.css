@@ -16,6 +16,8 @@
 @import 'cmps/note-todos.css';
 @import 'cmps/add-note.css';
 @import 'cmps/todo-preview.css';
+@import 'cmps/add-todo.css';
+@import 'cmps/notes-filter.css';
 
 /* MQ */
 @import './mq.css';

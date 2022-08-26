@@ -27,7 +27,7 @@ const gNotes = [
         info: {
             txt: 'Fullstack Me Baby!'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(155, 114, 243)'
     },
     {
         id: utilService.makeId(5),
@@ -37,13 +37,13 @@ const gNotes = [
             url: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1://some-img/me',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(155, 114, 243)'
     },
     {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: utilService.getRandomColor(),
+        backgroundColor: 'rgb(155, 114, 243)',
         info: {
             title: 'Get my stuff together',
             todos: [{
@@ -68,7 +68,7 @@ const gNotes = [
             url: 'https://www.youtube.com/embed/GWUbo0puBk0',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(155, 114, 243)'
     }]
 
 function query(filterBy) {
@@ -148,20 +148,20 @@ function changeNotePin(noteId) {
     return Promise.resolve(notes)
 }
 
-function creatNote(type, txt, title='', todos = []) {
+function creatNote(type, backgroundColor, txt, title = '', todos) {
     let note
     switch (type) {
         case 'note-txt':
-            note = _creatTxtNote(txt, title)
+            note = _creatTxtNote(txt, title, backgroundColor)
             break
         case 'note-img':
-            note = _creatImgNote(txt)
+            note = _creatImgNote(txt, backgroundColor)
             break
         case 'note-todos':
-            note = _creatTodoNote(txt, todos)
+            note = _creatTodoNote(txt, todos, backgroundColor)
             break
         case 'note-video':
-            note = _creatVideoNote(txt)
+            note = _creatVideoNote(txt, backgroundColor)
             break
     }
     return Promise.resolve(note)
@@ -223,7 +223,7 @@ function todoIsDone(checked, todoId, noteId) {
     return Promise.resolve(note)
 }
 
-function _creatTxtNote(txt, title) {
+function _creatTxtNote(txt, title,backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-txt',
@@ -232,11 +232,11 @@ function _creatTxtNote(txt, title) {
             txt,
             title
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor
     }
 }
 
-function _creatImgNote(txt) {
+function _creatImgNote(txt,backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-img',
@@ -245,24 +245,25 @@ function _creatImgNote(txt) {
             url: txt,
             title: 'My img'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor
     }
 }
 
-function _creatTodoNote(txt, todos) {
+function _creatTodoNote(txt, todos = [],backgroundColor) {
+    console.log('todos:', todos)
     return {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: utilService.getRandomColor(),
+        backgroundColor,
         info: {
             title: txt,
-            todos
+            todos: todos
         }
     }
 }
 
-function _creatVideoNote(txt) {
+function _creatVideoNote(txt,backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-video',
@@ -271,7 +272,7 @@ function _creatVideoNote(txt) {
             url: txt,
             title: 'My video'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor
     }
 }
 

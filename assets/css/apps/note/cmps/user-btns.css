@@ -20,7 +20,7 @@
 .user-btns .color-pick {
     display: flex;
     position: absolute;
-    bottom: 25px;
+    bottom: -44px;
     right: -28px;
 }
 

@@ -14,7 +14,7 @@ export class NoteTodos extends React.Component {
     handleCheckboxChange = (ev, todoId) => {
         const { checked } = ev.target
         const { note } = this.props
-
+        console.log('checked:', checked)
         this.props.onTodoIsDone(checked, todoId, note.id)
     }
 
