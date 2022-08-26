@@ -1,3 +1,5 @@
+import { UserMsg } from "./user-msg.jsx"
+
 const { Link, NavLink, withRouter } = ReactRouterDOM
 
 export class AppHeader extends React.Component {

@@ -1,3 +1,5 @@
+import { UserMsg } from '../../../cmps/user-msg.jsx';
+import { showSuccessMsg } from '../../../services/event-bus.service.js';
 import { AddNote } from '../cmps/add-note.jsx';
 import { NoteList } from '../cmps/note-list.jsx';
 import { NotesFilter } from '../cmps/notes-filter.jsx';
@@ -33,6 +35,7 @@ export class NoteIndex extends React.Component {
         // console.log('note:', note)
         noteService.addNote(note)
             .then(note => this.setState({ notes: [note, ...this.state.notes] }))
+            showSuccessMsg('Note Added')
     }
 
     onRemoveNote = (noteId) => {
@@ -41,7 +44,7 @@ export class NoteIndex extends React.Component {
             .then(() => {
                 const notes = this.state.notes.filter(note => note.id !== noteId)
                 this.setState({ notes })
-                // showSuccessMsg('Note removed')
+                showSuccessMsg('Note removed')
             })
     }
     onChangeNotePin = (noteId) => {
@@ -54,6 +57,7 @@ export class NoteIndex extends React.Component {
     render() {
         const { notes } = this.state
         return <section className="note-index main-layout full">
+            <UserMsg/>
             <NotesFilter onSetFilter={this.onSetFilter} />
             <AddNote onAddNote={this.onAddNote} />
             <hr />
