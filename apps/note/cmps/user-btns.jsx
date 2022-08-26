@@ -1,5 +1,6 @@
+import { createEmail } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
-
+const { Link, withRouter } = ReactRouterDOM
 
 export class UserBtns extends React.Component {
 
@@ -40,14 +41,28 @@ export class UserBtns extends React.Component {
 
     }
 
+    onTogglePin = () => {
+        const { note } = this.props
+        note.isPined = !note.isPined
+        this.props.onChangeNotePin(note.id)
+    }
+
+    onCreateEmail = () => {
+        const { note } = this.props
+        createEmail(note)
+    }
+
     render() {
 
-        const { onShowColors, onGetColor, onDuplicateNote } = this
+        const { onShowColors, onGetColor, onDuplicateNote,
+            onTogglePin, onCreateEmail } = this
         const { isColorOn } = this.state
         const { note, onRemoveNote } = this.props
         // console.log('note:', note)
         // console.log('isColorOn:', isColorOn)
         return <section className="user-btns">
+            <div onClick={onTogglePin}><i className="fa-solid fa-thumbtack"></i></div>
+            <Link to="/mail"> <div onClick={onCreateEmail}><i className="fa-solid fa-envelope"></i></div></Link>
             <div onClick={onDuplicateNote}><i className="fa-solid fa-paste"></i></div>
             <div onClick={onShowColors}><i className="fa-solid fa-palette" ></i></div>
             <div onClick={() => onRemoveNote(note.id)}> <i className="fa-solid fa-trash"></i></div>

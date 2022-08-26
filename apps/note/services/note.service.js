@@ -12,7 +12,9 @@ export const noteService = {
     createTodo,
     addTodo,
     editTodo,
-    getTodoById
+    todoIsDone,
+    removeTodo,
+    changeNotePin
 }
 
 const KEY = 'notesDB'
@@ -25,21 +27,23 @@ const gNotes = [
         info: {
             txt: 'Fullstack Me Baby!'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     },
     {
         id: utilService.makeId(5),
         type: 'note-img',
+        isPinned: false,
         info: {
             url: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1://some-img/me',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     },
     {
         id: utilService.makeId(5),
         type: 'note-todos',
-        backgroundColor: utilService.getRandomColor(),
+        isPinned: false,
+        backgroundColor: 'rgb(245, 166, 166)',
         info: {
             title: 'Get my stuff together',
             todos: [{
@@ -51,7 +55,7 @@ const gNotes = [
             {
                 id: utilService.makeId(5),
                 txt: 'Coding power',
-                isDone: false,
+                isDone: true,
                 doneAt: 187111111
             }]
         }
@@ -59,19 +63,30 @@ const gNotes = [
     {
         id: utilService.makeId(5),
         type: 'note-video',
+        isPinned: false,
         info: {
             url: 'https://www.youtube.com/embed/GWUbo0puBk0',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }]
 
-function query() {
+function query(filterBy) {
     let notes = _loadFromStorage()
     if (!notes || notes.length === 0) {
         notes = gNotes
         // console.log('notes from service:', notes)
         _saveToStorage(notes)
+    }
+
+    if (filterBy) {
+        console.log('filterBy from service:', filterBy)
+        let { type } = filterBy
+        let txt = filterBy.title
+        notes = notes.filter(note => (
+            type === '' ? note : note.type === type
+        ))
+
     }
     return Promise.resolve(notes)
 }
@@ -123,11 +138,21 @@ function addNote(note) {
     return Promise.resolve(note)
 }
 
-function creatNote(type, txt, todos = []) {
+function changeNotePin(noteId) {
+    if (!noteId) return Promise.resolve(null)
+    // console.log('noteId:', noteId)
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    note.isPinned = !note.isPinned
+    _saveToStorage(notes)
+    return Promise.resolve(notes)
+}
+
+function creatNote(type, txt, title='', todos = []) {
     let note
     switch (type) {
         case 'note-txt':
-            note = _creatTxtNote(txt)
+            note = _creatTxtNote(txt, title)
             break
         case 'note-img':
             note = _creatImgNote(txt)
@@ -142,16 +167,6 @@ function creatNote(type, txt, todos = []) {
     return Promise.resolve(note)
 }
 
-function getTodoById(noteId,todoId) {
-    if (!noteId) return Promise.resolve(null)
-    const notes = _loadFromStorage()
-    const note = notes.find(note => note.id === noteId)
-   
-    const { todos } = note.info
-    const todo = todos.find(todo => todo.id === todoId)
-
-    return Promise.resolve(todo)
-}
 
 function createTodo(txt) {
     return {
@@ -160,6 +175,17 @@ function createTodo(txt) {
         isDone: false,
         doneAt: null
     }
+}
+
+function removeTodo(todoId, noteId) {
+    let notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    let { todos } = note.info
+    const idx = todos.findIndex(todo => todo.id === todoId)
+    todos.splice(idx, 1)
+    _saveToStorage(notes)
+    return Promise.resolve()
+
 }
 
 function addTodo(todo, noteId) {
@@ -185,15 +211,28 @@ function editTodo(txt, noteId, todoId) {
     return Promise.resolve(note)
 }
 
-function _creatTxtNote(txt) {
+function todoIsDone(checked, todoId, noteId) {
+    if (!noteId) return Promise.resolve(null)
+
+    const notes = _loadFromStorage()
+    const note = notes.find(note => note.id === noteId)
+    const { todos } = note.info
+    const todo = todos.find(todo => todo.id === todoId)
+    todo.isDone = !todo.isDone
+    _saveToStorage(notes)
+    return Promise.resolve(note)
+}
+
+function _creatTxtNote(txt, title) {
     return {
         id: utilService.makeId(5),
         type: 'note-txt',
         isPinned: false,
         info: {
-            txt: txt
+            txt,
+            title
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 
@@ -201,11 +240,12 @@ function _creatImgNote(txt) {
     return {
         id: utilService.makeId(5),
         type: 'note-img',
+        isPinned: false,
         info: {
             url: txt,
             title: 'My img'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 
@@ -213,7 +253,8 @@ function _creatTodoNote(txt, todos) {
     return {
         id: utilService.makeId(5),
         type: 'note-todos',
-        backgroundColor: utilService.getRandomColor(),
+        isPinned: false,
+        backgroundColor: 'rgb(245, 166, 166)',
         info: {
             title: txt,
             todos
@@ -225,11 +266,12 @@ function _creatVideoNote(txt) {
     return {
         id: utilService.makeId(5),
         type: 'note-video',
+        isPinned: false,
         info: {
             url: txt,
             title: 'My video'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 

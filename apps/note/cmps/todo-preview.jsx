@@ -1,12 +1,13 @@
 
-export function TodoPreview({ handleCheckboxChange, handleTxtChange,todo }) {
+export function TodoPreview({ handleCheckboxChange, handleTxtChange, onGetRemovedTodo, todo }) {
 
-
-    return <li key={todo.id}>
+    // console.log('todo.isDone:', todo.isDone)
+    return <li className="todo-preview">
         <input type="checkbox"
             id="check-todo"
             onChange={() => handleCheckboxChange(event, todo.id)} />
-        <span 
-            contentEditable='true'
-            onBlur={() => handleTxtChange(event, todo.id)}>{todo.txt}</span></li>
+        <span className={todo.isDone ? 'done' : ''}
+            contentEditable='true' suppressContentEditableWarning
+            onBlur={() => handleTxtChange(event, todo.id)}>{todo.txt}</span>
+        <button onClick={() => onGetRemovedTodo(todo.id)}>x</button></li>
 }

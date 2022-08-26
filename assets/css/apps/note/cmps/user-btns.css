@@ -1,4 +1,4 @@
-.user-btns{
+.user-btns {
     display: flex;
     justify-content: flex-end;
     gap: 25px;
@@ -7,25 +7,31 @@
     right: 20px;
 }
 
-.user-btns >*{
+.user-btns>* {
     cursor: pointer;
+    color: rgb(87, 85, 85);
 }
 
-.user-btns .color-pick{
+.user-btns>*:hover {
+    color: rgb(21, 21, 21);
+    transition: color .5s;
+}
+
+.user-btns .color-pick {
     display: flex;
     position: absolute;
     bottom: 25px;
-    right: 10px;
+    right: -28px;
 }
 
-.user-btns .color-pick>*:not(:last-child){
+.user-btns .color-pick>*:not(:last-child) {
     margin-inline-end: 5px;
 }
 
-.color-pick .picked-color{
+.color-pick .picked-color {
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    background-color:rgb(243, 114, 140);
+    background-color: rgb(243, 114, 140);
 
 }

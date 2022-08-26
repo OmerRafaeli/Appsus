@@ -3,7 +3,7 @@
 export class NoteTxt extends React.Component {
     state = {
         txt: this.props.txt,
-        // txt:'sdfsdf',
+        title: this.props.title,
         color: null
     }
 
@@ -16,10 +16,11 @@ export class NoteTxt extends React.Component {
 
     render() {
         // console.log('this.props:', this.props)
-        const { txt } = this.state
+        const { txt, title } = this.state
 
         return <section className="note-txt">
-            <div contentEditable='true' onBlur={this.handleChange}>
+            {title && <h5>{title}</h5>}
+            <div contentEditable='true' suppressContentEditableWarning onBlur={this.handleChange}>
 
                 {txt}
             </div>

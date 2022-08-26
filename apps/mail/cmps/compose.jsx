@@ -3,6 +3,7 @@ import { eventBusService } from '../../../services/event-bus.service.js'
 const { Link } = ReactRouterDOM
 
 export class Compose extends React.Component {
+    unsubscribe
     state = {
         emailContent: {
 
@@ -17,8 +18,14 @@ export class Compose extends React.Component {
         }
     }
 
-    // inputRef = React.createRef()
 
+    componentDidMount() {
+        const { emailContent } = this.state
+        this.unsubscribe = eventBusService.on('note-to-mail', (note) => {
+          
+            this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
+        })
+    }
 
 
     onSubmit = (ev) => {

@@ -1,7 +1,11 @@
-
+/* Layouts */
+@import 'basics/layouts.css';
 
 /* Views */
 @import './views/note-index.css';
+
+/* Helpers */
+@import 'basics/helpers.css';
 
 /* Cmps */
 @import 'cmps/note-list.css';
@@ -9,7 +13,9 @@
 @import 'cmps/note-video.css';
 @import 'cmps/note-img.css';
 @import 'cmps/user-btns.css';
+@import 'cmps/note-todos.css';
 @import 'cmps/add-note.css';
+@import 'cmps/todo-preview.css';
 
 /* MQ */
 @import './mq.css';

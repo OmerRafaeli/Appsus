@@ -1,3 +1,4 @@
+import { eventBusService } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
 
 
@@ -8,6 +9,14 @@ export class AddNote extends React.Component {
         type: 'note-txt',
         txt: null
     }
+
+    componentDidMount() {
+        this.unsubscribe = eventBusService.on('mail-to-note', () => {
+            this.onCreateNote('note-txt',)
+        })
+    }
+
+
 
     onHandleChange = (ev) => {
         const value = ev.target.value
@@ -35,19 +44,19 @@ export class AddNote extends React.Component {
         }
     }
 
-    onCreateNote = (type, txt) => {
-      
+    onCreateNote = (type, txt, title) => {
+        if (!txt) return
         // console.log('type:', type)
         // console.log('txt:', txt)
-        noteService.creatNote(type, txt)
-            .then(note =>{
+        noteService.creatNote(type, txt, title)
+            .then(note => {
                 this.props.onAddNote(note)
             })
-            this.setState({
-                enterTxt: 'Add a new Note',
-                type: 'note-txt',
-                txt: ''
-            })
+        this.setState({
+            enterTxt: 'Add a new Note',
+            type: 'note-txt',
+            txt: ''
+        })
     }
 
 
@@ -67,13 +76,13 @@ export class AddNote extends React.Component {
                         placeholder={enterTxt}
                         value={txt}
                         onChange={onHandleChange} />
+                    <div className="btns-input">
+                        <button onClick={() => onGetType('note-txt')}><i className="fa-solid fa-comment"></i></button>
+                        <button onClick={() => onGetType('note-img')}><i className="fa-solid fa-image"></i></button>
+                        <button onClick={() => onGetType('note-todos')}><i className="fa-solid fa-list"></i></button>
+                        <button onClick={() => onGetType('note-video')}><i className="fa-brands fa-youtube"></i></button>
+                    </div>
                 </form>
-                <div className="btns-input">
-                    <button onClick={() => onGetType('note-txt')}><i className="fa-solid fa-font"></i></button>
-                    <button onClick={() => onGetType('note-img')}><i className="fa-solid fa-image"></i></button>
-                    <button onClick={() => onGetType('note-todos')}><i className="fa-solid fa-list"></i></button>
-                    <button onClick={() => onGetType('note-video')}><i className="fa-solid fa-video"></i></button>
-                </div>
             </div>
         </section>
     }
