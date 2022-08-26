@@ -1,4 +1,6 @@
 import { EmailService } from "../services/mail.service.js"
+import { eventBusService } from '../../../services/event-bus.service.js'
+const { Link } = ReactRouterDOM
 
 export class Compose extends React.Component {
     state = {
@@ -33,11 +35,13 @@ export class Compose extends React.Component {
                 ...prevState.emailContent,
                 [field]: value
             }
-        }))
+        }),() =>{ console.log(this.state.emailContent)}
+        )
     }
 
     render() {
         const { onIsComposing } = this.props
+        const { to, subject, body } = this.state.emailContent
         return <form onSubmit={this.onSubmit} className="compose-container">
             <div className="compose-headline">
                 <h1>New Message</h1>
@@ -48,13 +52,15 @@ export class Compose extends React.Component {
                 className="send-to compose-input"
                 type="email"
                 placeholder="to"
+                value={to}
                 onChange={this.handleChange}
             />
             <input
                 name="subject"
-                className="subjet compose-input"
+                className="subject compose-input"
                 type="text"
                 placeholder="subject"
+                value={subject}
                 onChange={this.handleChange}
             />
             <input
@@ -62,9 +68,11 @@ export class Compose extends React.Component {
                 className="body compose-input"
                 type="text"
                 placeholder="message..."
+                value={body}
                 onChange={this.handleChange}
             />
             <button>Send</button>
+            <Link to={"/note"} ><img  className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
         </form>
     }
 
