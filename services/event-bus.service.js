@@ -22,6 +22,14 @@ export function showUserMsg(msg) {
     eventBusService.emit('show-user-msg', msg)
 }
 
+export function createEmail(note) {
+    eventBusService.emit('note-to-mail', note)
+}
+
+export function createNote(email) {
+    eventBusService.emit('mail-to-note', email)
+}
+
 export function showSuccessMsg(txt) {
     showUserMsg({ txt, type: 'success' })
 }
@@ -72,5 +80,5 @@ export function createNote(){
 
 // setTimeout(()=>{
 //     eventBus.emit('muk', 'Buuuu!')
-//     eventBus.emit('puk', 3)
+//     // eventBus.emit('puk', 3)
 // }, 3000)
