@@ -3,7 +3,7 @@ import { noteService } from "../services/note.service.js"
 
 
 export class AddNote extends React.Component {
-
+    unsubscribe
     state = {
         enterTxt: 'Add a new Note',
         type: 'note-txt',
@@ -11,8 +11,11 @@ export class AddNote extends React.Component {
     }
 
     componentDidMount() {
-        this.unsubscribe = eventBusService.on('mail-to-note', () => {
-            this.onCreateNote('note-txt',)
+        this.unsubscribe = eventBusService.on('mail-to-note', (email) => {
+            const {subject, body} = email
+            console.log('email:', email)
+            
+            this.onCreateNote('note-txt',body, subject)
         })
     }
 

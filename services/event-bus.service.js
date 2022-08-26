@@ -36,8 +36,7 @@ export function createEmail(note) {
 }
 
 export function createNote(email){
-    const {subject, body} = email
-    eventBusService.emit('mail-to-note', subject, body)
+    eventBusService.emit('mail-to-note', email)
 }
 
 

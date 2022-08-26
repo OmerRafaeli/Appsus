@@ -2,16 +2,16 @@ import { eventBusService } from "../../../services/event-bus.service.js"
 import { Compose } from "../cmps/compose.jsx"
 
 export class SideNav extends React.Component {
-
+    unsubscribe
     state = {
-        isComposing: true
+        isComposing: false
 
     }
 
     componentDidMount() {
         this.unsubscribe = eventBusService.on('note-to-mail', () => {
-            // this.setState({ isComposing: true })
-            this.onIsComposing()
+            this.setState({ isComposing: true })
+            // this.onIsComposing()
         })
         console.log('isComposing:', this.state.isComposing)
     }
