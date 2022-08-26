@@ -27,7 +27,7 @@ const gNotes = [
         info: {
             txt: 'Fullstack Me Baby!'
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     },
     {
         id: utilService.makeId(5),
@@ -37,13 +37,13 @@ const gNotes = [
             url: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1://some-img/me',
             title: 'Bobi and Me'
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     },
     {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: 'rgb(245, 166, 166)',
+        backgroundColor: utilService.getRandomColor(),
         info: {
             title: 'Get my stuff together',
             todos: [{
@@ -68,7 +68,7 @@ const gNotes = [
             url: 'https://www.youtube.com/embed/GWUbo0puBk0',
             title: 'Bobi and Me'
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     }]
 
 function query(filterBy) {
@@ -232,7 +232,7 @@ function _creatTxtNote(txt, title) {
             txt,
             title
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     }
 }
 
@@ -245,7 +245,7 @@ function _creatImgNote(txt) {
             url: txt,
             title: 'My img'
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     }
 }
 
@@ -254,7 +254,7 @@ function _creatTodoNote(txt, todos) {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: 'rgb(245, 166, 166)',
+        backgroundColor: utilService.getRandomColor(),
         info: {
             title: txt,
             todos
@@ -271,7 +271,7 @@ function _creatVideoNote(txt) {
             url: txt,
             title: 'My video'
         },
-        backgroundColor: 'rgb(245, 166, 166)'
+        backgroundColor: utilService.getRandomColor()
     }
 }
 
