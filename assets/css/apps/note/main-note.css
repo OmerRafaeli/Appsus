@@ -1,4 +1,5 @@
-
+/* Layouts */
+@import 'basics/layouts.css';
 
 /* Views */
 @import './views/note-index.css';

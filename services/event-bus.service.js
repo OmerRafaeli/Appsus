@@ -30,6 +30,27 @@ export function showErrorMsg(txt) {
 }
 
 
+export function createEmail(note) {
+    const { txt } = note.info
+    eventBusService.emit('note-to-mail', note)
+    // console.log('txt:', txt)
+}
+
+
+export function createNote(){
+    eventBusService.emit('mail-to-note', note)
+}
+
+
+
+
+
+
+
+
+
+
+
 // Service Testing:
 // eventBus.on('muk', (data)=>{
 //     console.log('Got Muk with data:', data)

@@ -27,7 +27,7 @@ const gNotes = [
         info: {
             txt: 'Fullstack Me Baby!'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     },
     {
         id: utilService.makeId(5),
@@ -37,13 +37,13 @@ const gNotes = [
             url: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1://some-img/me',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     },
     {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: utilService.getRandomColor(),
+        backgroundColor: 'rgb(245, 166, 166)',
         info: {
             title: 'Get my stuff together',
             todos: [{
@@ -68,7 +68,7 @@ const gNotes = [
             url: 'https://www.youtube.com/embed/GWUbo0puBk0',
             title: 'Bobi and Me'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }]
 
 function query(filterBy) {
@@ -140,7 +140,7 @@ function addNote(note) {
 
 function changeNotePin(noteId) {
     if (!noteId) return Promise.resolve(null)
-// console.log('noteId:', noteId)
+    // console.log('noteId:', noteId)
     const notes = _loadFromStorage()
     const note = notes.find(note => note.id === noteId)
     note.isPinned = !note.isPinned
@@ -148,11 +148,11 @@ function changeNotePin(noteId) {
     return Promise.resolve(notes)
 }
 
-function creatNote(type, txt, todos = []) {
+function creatNote(type, txt, title='', todos = []) {
     let note
     switch (type) {
         case 'note-txt':
-            note = _creatTxtNote(txt)
+            note = _creatTxtNote(txt, title)
             break
         case 'note-img':
             note = _creatImgNote(txt)
@@ -223,15 +223,16 @@ function todoIsDone(checked, todoId, noteId) {
     return Promise.resolve(note)
 }
 
-function _creatTxtNote(txt) {
+function _creatTxtNote(txt, title) {
     return {
         id: utilService.makeId(5),
         type: 'note-txt',
         isPinned: false,
         info: {
-            txt
+            txt,
+            title
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 
@@ -244,7 +245,7 @@ function _creatImgNote(txt) {
             url: txt,
             title: 'My img'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 
@@ -253,7 +254,7 @@ function _creatTodoNote(txt, todos) {
         id: utilService.makeId(5),
         type: 'note-todos',
         isPinned: false,
-        backgroundColor: utilService.getRandomColor(),
+        backgroundColor: 'rgb(245, 166, 166)',
         info: {
             title: txt,
             todos
@@ -270,7 +271,7 @@ function _creatVideoNote(txt) {
             url: txt,
             title: 'My video'
         },
-        backgroundColor: utilService.getRandomColor()
+        backgroundColor: 'rgb(245, 166, 166)'
     }
 }
 

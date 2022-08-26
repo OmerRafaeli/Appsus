@@ -60,7 +60,7 @@ export class NotePreview extends React.Component {
         if (!note) return
         // console.log('this.state.note:', this.state.note)
         const { onRemoveNote, onAddNote ,onChangeNotePin} = this.props
-        const { txt, url } = note.info
+        const { txt, url ,title} = note.info
         const { backgroundColor } = note
         const { onChangeTxt, onChangeColor, onAddTodo,
              onTodoIsDone, onRemoveTodo } = this
@@ -68,7 +68,7 @@ export class NotePreview extends React.Component {
         function DynamicCmp() {
             switch (note.type) {
                 case 'note-txt':
-                    return <NoteTxt onChangeTxt={onChangeTxt} note={note} txt={txt} />
+                    return <NoteTxt onChangeTxt={onChangeTxt} note={note} txt={txt} title={title} />
                 case 'note-img':
                     return <NoteImg note={note} url={url} />
                 case 'note-todos':

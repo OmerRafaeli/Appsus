@@ -53,7 +53,7 @@ export class NoteIndex extends React.Component {
 
     render() {
         const { notes } = this.state
-        return <section className="note-index">
+        return <section className="note-index main-layout full">
             <NotesFilter onSetFilter={this.onSetFilter} />
             <AddNote onAddNote={this.onAddNote} />
             <NoteList notes={notes}

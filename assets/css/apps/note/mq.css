@@ -1,19 +1,50 @@
+@media (min-width:470px) {
+    .main-layout>*:not(.full) {
+        max-width: 440px;
+    }
 
-
-@media (min-width:500px){
-    .note-list{
+    .note-list {
         columns: 2;
+    }
+
+    .note-input form {
+        flex-direction: row;
+        width: 25rem;
+        height: 2.5rem;
+    }
+
+    .add-note [name=add-note] {
+
+        margin-bottom: 0;
+    }
+
+    .user-btns>* {
+        opacity: 0;
+        transition: opacity .5s;
+    }
+
+    .note-preview:hover .user-btns>* {
+        opacity: 100;
+        transition: opacity .5s;
     }
 }
 
-@media (min-width:650px){
-    .note-list{
+@media (min-width:650px) {
+    .main-layout>*:not(.full) {
+        max-width: 620px;
+    }
+
+    .note-list {
         columns: 3;
     }
 }
 
-@media (min-width:900px){
-    .note-list{
+@media (min-width:980px) {
+    .main-layout>*:not(.full) {
+        max-width: 950px;
+    }
+
+    .note-list {
         columns: 4;
     }
 }

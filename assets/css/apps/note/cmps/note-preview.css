@@ -14,3 +14,8 @@
     break-inside: avoid;
     line-break: anywhere;
 }
+
+.note-preview:hover {
+    box-shadow: 0 0 6px 0px #757070;
+    transition: box-shadow .3s;
+}

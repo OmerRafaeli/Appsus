@@ -1,6 +1,8 @@
+import { eventBusService } from "../../../services/event-bus.service.js"
 import { EmailService } from "../services/mail.service.js"
 
 export class Compose extends React.Component {
+    unsubscribe
     state = {
         emailContent: {
 
@@ -15,8 +17,14 @@ export class Compose extends React.Component {
         }
     }
 
-    // inputRef = React.createRef()
 
+    componentDidMount() {
+        const { emailContent } = this.state
+        this.unsubscribe = eventBusService.on('note-to-mail', (note) => {
+          
+            this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
+        })
+    }
 
 
     onSubmit = (ev) => {
@@ -38,6 +46,7 @@ export class Compose extends React.Component {
 
     render() {
         const { onIsComposing } = this.props
+        const { subject } = this.state.emailContent
         return <form onSubmit={this.onSubmit} className="compose-container">
             <div className="compose-headline">
                 <h1>New Message</h1>
@@ -52,9 +61,10 @@ export class Compose extends React.Component {
             />
             <input
                 name="subject"
-                className="subjet compose-input"
+                className="subject compose-input"
                 type="text"
                 placeholder="subject"
+                value={subject}
                 onChange={this.handleChange}
             />
             <input
