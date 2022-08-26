@@ -1,0 +1,22 @@
+
+.books-preview{
+    padding: 10px;
+    box-shadow: 0 0 9px 1px black;
+   position: relative;
+}
+
+.books-preview img{
+    cursor: pointer;
+}
+
+.books-preview:hover{
+    transition: box-shadow .5s;
+    box-shadow: 0 0 9px 6px black;
+}
+
+.books-preview button{
+    position: absolute; 
+    bottom: 10px;
+    left: 10px;
+    margin-bottom: 10px; 
+}

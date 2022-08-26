@@ -21,19 +21,19 @@ export class UserBtns extends React.Component {
 
     onDuplicateNote = () => {
         const { note } = this.props
-        const { type } = note
+        const { type,backgroundColor } = note
         if (type === 'note-video' || type === 'note-img') {
-            noteService.creatNote(type, note.info.url)
+            noteService.creatNote(type, backgroundColor,note.info.url)
                 .then(note => {
                     this.props.onAddNote(note)
                 })
         } else if (type === 'note-todos') {
-            noteService.creatNote(type, note.info.title, note.info.todos)
+            noteService.creatNote(type, backgroundColor,note.info.title,'', note.info.todos)
                 .then(note => {
                     this.props.onAddNote(note)
                 })
         } else {
-            noteService.creatNote(type, note.info.txt)
+            noteService.creatNote(type, backgroundColor,note.info.txt)
                 .then(note => {
                     this.props.onAddNote(note)
                 })

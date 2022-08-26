@@ -14,7 +14,7 @@ export function AddTodo({ note, onAddTodo }) {
         }
     }
 
-    return <section>
+    return <section className="add-todo">
         <form onBlur={onCreateTodo}>
             <input type="text"
                 placeholder="Add todo here"

@@ -9,5 +9,6 @@ export function TodoPreview({ handleCheckboxChange, handleTxtChange, onGetRemove
         <span className={todo.isDone ? 'done' : ''}
             contentEditable='true' suppressContentEditableWarning
             onBlur={() => handleTxtChange(event, todo.id)}>{todo.txt}</span>
-        <button onClick={() => onGetRemovedTodo(todo.id)}>x</button></li>
+        <div className="btn-remove-todo" onClick={() => onGetRemovedTodo(todo.id)}>
+            <i className="fa-solid fa-xmark"></i></div></li>
 }

@@ -48,7 +48,7 @@ export class AddNote extends React.Component {
         if (!txt) return
         // console.log('type:', type)
         // console.log('txt:', txt)
-        noteService.creatNote(type, txt, title)
+        noteService.creatNote(type, 'rgb(155, 114, 243)',txt, title)
             .then(note => {
                 this.props.onAddNote(note)
             })

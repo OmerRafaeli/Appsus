@@ -1,0 +1,21 @@
+.review-add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-add [name=user-name] {
+    margin-inline-start: 10px;
+}
+
+.review-form >form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px
+}
+
+.review-form >form [name=date]{
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.home {
+    width: 100wh;
+    height: 100vh;
+    text-align: center;
+    background-image: url('../../img/3704526.jpg');
+    background-size: 900px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
