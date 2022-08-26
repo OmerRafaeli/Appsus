@@ -5,7 +5,7 @@ export const noteService = {
     query,
     getNoteById,
     removeNote,
-    creatNote,
+    createNote: createNote,
     addNote,
     changeNoteColor,
     editTxt,
@@ -148,7 +148,7 @@ function changeNotePin(noteId) {
     return Promise.resolve(notes)
 }
 
-function creatNote(type, backgroundColor, txt, title = '', todos) {
+function createNote(type, backgroundColor, txt, title = '', todos) {
     let note
     switch (type) {
         case 'note-txt':

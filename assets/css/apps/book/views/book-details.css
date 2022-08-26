@@ -1,8 +1,8 @@
 .book-details {
     position: relative;
     text-align: center;
-    /* height: 60vh; */
-    /* max-width: 600px; */
+    margin-inline-start: 85px;
+    margin-inline-end: 85px;
 }
 
 .book-details .book-details-container {
@@ -44,7 +44,9 @@
 
 .book-details button {
     cursor: pointer;
-    margin-bottom: 100px;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
+    margin-bottom: 50px;
 }
 
 .book-details .sale {
@@ -59,3 +61,16 @@
 .book-details .long-text p{
     margin-bottom: 10px;
 }   
+
+@media (max-width: 500px){
+
+    .book-details .book-details-container{
+        flex-direction: column-reverse;
+    }
+
+    .book-details .img-container{
+       max-width: 85%;
+        height: 85%;
+        align-self: center;
+    }
+}

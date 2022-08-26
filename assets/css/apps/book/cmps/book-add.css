@@ -1,9 +1,10 @@
 .book-add .searched-book-list p {
-    width: 400px;
+    /* width: 400px; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 5px;
+
 }
 
 .book-add .searched-book-list button{

@@ -7,15 +7,14 @@ export class AddNote extends React.Component {
     state = {
         enterTxt: 'Add a new Note',
         type: 'note-txt',
-        txt: null
+        txt: ''
     }
 
     componentDidMount() {
         this.unsubscribe = eventBusService.on('mail-to-note', (email) => {
-            const {subject, body} = email
             console.log('email:', email)
-            
-            this.onCreateNote('note-txt',body, subject)
+            const {subject, body} = email            
+            this.onCreateNote('note-txt', body, subject)
         })
     }
 
@@ -51,7 +50,7 @@ export class AddNote extends React.Component {
         if (!txt) return
         // console.log('type:', type)
         // console.log('txt:', txt)
-        noteService.creatNote(type, 'rgb(155, 114, 243)',txt, title)
+        noteService.createNote(type, 'rgb(155, 114, 243)',txt, title)
             .then(note => {
                 this.props.onAddNote(note)
             })

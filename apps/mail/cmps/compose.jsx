@@ -10,7 +10,7 @@ export class Compose extends React.Component {
             to: '',
             subject: '',
             message: '',
-            sentAt: Date.now(),
+            sentAt: null,
             isRead: true,
             sentAt: '',
             isImportant: false,
@@ -30,7 +30,9 @@ export class Compose extends React.Component {
 
     onSubmit = (ev) => {
         ev.preventDefault()
-        EmailService.sendEmail(this.state.emailContent)
+        EmailService.sendEmail(this.state.emailContent, Date.now())
+        console.log(':', this.state.emailContent)
+        
 
     }
 

@@ -46,6 +46,7 @@ export class BookAdd extends React.Component {
                     name="search-book"
                     value={searchedBook}
                     onChange={this.handleChange} />
+                    <button>Add</button>
             </form>
             {books && <ul className="searched-book-list">
                 {books.map(book => <SearchedBooksList

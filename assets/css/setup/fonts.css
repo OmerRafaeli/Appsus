@@ -1,0 +1,24 @@
+@font-face {
+    font-family: noto-bold;
+    src: url(../../fonts/NotoSerif-Bold.ttf);
+}
+@font-face {
+    font-family: noto-bold-italic;
+    src: url(../../fonts/NotoSerif-BoldItalic.ttf);
+}
+@font-face {
+    font-family: noto-italic;
+    src: url(../../fonts/NotoSerif-Italic.ttf);
+}
+@font-face {
+    font-family: noto-regular;
+    src: url(../../fonts/NotoSerif-Regular.ttf);
+}
+@font-face {
+    font-family: noto-light;
+    src: url(../../fonts/NotoSans-Light.ttf);
+}
+@font-face {
+    font-family: noto-thin;
+    src: url(../../fonts/NotoSans-Thin.ttf);
+}

@@ -10,7 +10,12 @@ export function MailList({ emails }) {
             <a><i className="fa-solid fa-envelope"></i></a>
         </div>
         <ul>
-            {emails.map(email => <li key={email.id} className="clean-list">
+            {emails.map(email => !email.isRead && <li key={email.id} className="clean-list">
+                <EmailPreview email={email} />
+            </li>
+            )}
+            
+            {emails.map(email => email.isRead && <li key={email.id} className="clean-list">
                 <EmailPreview email={email} />
             </li>
             )}

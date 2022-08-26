@@ -1,7 +1,7 @@
-/* BASE */
+/* BASE
 @import './basics/base.css';
 @import 'basics/helpers.css';
-@import 'basics/layout.css';
+@import 'basics/layout.css'; */
 
 
 /* VIEWS */
@@ -12,7 +12,6 @@
 @import 'cmps/books-list.css';
 @import 'cmps/books-preview.css';
 @import 'cmps/books-filter.css';
-@import 'cmps/app-header.css';
 @import 'cmps/review-add.css';
 @import 'cmps/star-rate.css';
 @import 'cmps/book-add.css';

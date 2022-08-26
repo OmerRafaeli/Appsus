@@ -111,17 +111,17 @@ function sendEmail(email){
     emails.push(sentMail)
     _saveToStorage(emails)
     
-    return Promise.resolve()
+    return Promise.resolve(emails)
     
 }
 
-function _createEmail(email) {    
+function _createEmail(email, date = Date.now()) {    
     const newEmail = {
         id: utilService.makeId(),
         subject: email.subject,//email.subject,
         body: email.body,//email.body,
         isRead: (utilService.getRandomIntInclusive(1, 100) >= 50) ? true : false, 
-        sentAt: email.sentAt,
+        sentAt: date,
         isImportant: false,
         to: email.to,
         isSent: email.isSent
@@ -144,7 +144,7 @@ function _createEmails(){
 
     for (let i = 0; i < 5; i++) {
         const email = data[i]       
-        emails.push(_createEmail(email))
+        emails.push(_createEmail(email, email.sentAt))
     }
     console.log('data:', emails)
     return emails

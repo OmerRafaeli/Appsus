@@ -10,17 +10,39 @@ export class SideNav extends React.Component {
 
     componentDidMount() {
         this.unsubscribe = eventBusService.on('note-to-mail', () => {
-            this.setState({ isComposing: true })
-            // this.onIsComposing()
+            console.log('helooooo')
+            setTimeout(() => {
+                console.log('this.state:', this.state.isComposing)
+                this.onIsComposing()
+
+            }, 3000)
         })
-        console.log('isComposing:', this.state.isComposing)
+
+
+
+
+        // console.log('hi!')
+        // let { isComposing } = this.state
+        // isComposing = !isComposing
+        // this.setState({ isComposing })
+
+
+        // setTimeout(()=>{
+        // console.log('delayyyyyy')
+
+        // }, 1500)
+
     }
 
     onIsComposing = () => {
         let { isComposing } = this.state
         isComposing = !isComposing
         this.setState({ isComposing })
+        if(!this.state.isComposing)console.log('composing!')
+        setTimeout(() => {
+            console.log('this.state:', this.state)
 
+        }, 1500)
     }
 
     render() {

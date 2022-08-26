@@ -19,28 +19,26 @@ header {
 .app-menu-icon {
     height: 35px;
     margin-inline-end: 25px;
+    display: none;
+    align-self: center;
 }
 
 .logo-container img{
     position: relative;
-    left: 0;
+    left: 25px;
     width: 125px;
 }
 
 nav a {
-    margin: .5em;
+    margin: .2em;
+    margin-inline-end: 5px;
     justify-self: end;
     justify-content: center;
-}
-
-nav a:active {
-    color: purple;
+    margin-inline-end: 15px;
 }
 
 nav a.active {
     color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
 }
 
 .icon-btn{
@@ -49,8 +47,45 @@ nav a.active {
 }
 
 .header-nav-bar{
+    align-self: center;
     margin-inline-end: 25px;
-    transform: scaleX(1);
     transform-origin: right;
-    transition: transform .6s;
+    z-index: 10;
+    
+}
+
+
+
+
+@media (max-width: 500px){
+
+    .app-menu-icon {
+        display: inline;
+        margin-inline-end: 25px;
+        cursor: pointer;
+    }
+
+    .header-nav-bar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 90px;
+        right: -70px;
+        background-color: rgb(251, 251, 251);
+        width: 80px;
+        height: 100%;
+        margin: 0;
+        transform: translateX(0);
+        transition: transform .3s;
+    }
+
+    .header-nav-bar.open{
+        transform: translateX(-70px);
+    }
+
+    nav a {
+        margin-top: 25px;
+    }
+
 }
