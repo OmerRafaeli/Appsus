@@ -1,5 +1,6 @@
 import { eventBusService } from "../../../services/event-bus.service.js"
 import { Compose } from "../cmps/compose.jsx"
+const {Link} = ReactRouterDOM
 
 export class SideNav extends React.Component {
     unsubscribe
@@ -39,11 +40,11 @@ export class SideNav extends React.Component {
             </nav>
             {isComposing && <Compose onIsComposing={this.onIsComposing} />}
             <div className="filter">
-                <a href=""><i className="fa-solid fa-inbox"></i>  Inbox</a>
-                <a href=""><i className="fa-regular fa-star"></i>  Starred</a>
-                <a href=""><i className="fa-solid fa-paper-plane"></i>  Sent</a>
-                <a href=""><i className="fa-solid fa-file"></i>  Draft</a>
-                <a href=""><i className="fa-solid fa-trash"></i>  Trash</a>
+                <Link><i className="fa-solid fa-inbox"></i>  Inbox</Link>
+                <Link><i className="fa-regular fa-star"></i>  Starred</Link>
+                <Link><i className="fa-solid fa-paper-plane"></i>  Sent</Link>
+                <Link><i className="fa-solid fa-file"></i>  Draft</Link>
+                <Link><i className="fa-solid fa-trash"></i>  Trash</Link>
             </div>
         </section>
 

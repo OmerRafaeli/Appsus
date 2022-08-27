@@ -18,10 +18,6 @@ export class MailIndex extends React.Component {
         this.checkUnreadEmails()
     }
 
-    componentDidUpdate() {
-        // this.checkUnreadEmails()
-    }
-
     loadEmails = () => {
         EmailService.query()
             .then((emails) => this.setState({ emails }))

@@ -26,8 +26,8 @@
     margin-top: 15px;
 }
 
-@media (max-width: 500px){
+/* @media (max-width: 500px){
     .side-nav-container{
-        /* margin-top: 125px; */
+        margin-top: 125px;
     }
-}
+} */
