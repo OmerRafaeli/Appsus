@@ -32,22 +32,12 @@ export function showErrorMsg(txt) {
 export function createEmail(note) {
     const { txt } = note.info
     eventBusService.emit('note-to-mail', note)
-    // console.log('txt:', txt)
+    console.log('txt event bus:', note.info.txt)
 }
 
 export function createNote(email){
-    eventBusService.emit('mail-to-note', email)
+    eventBusService.emit('mail-to-note', email)    
 }
-
-
-
-
-
-
-
-
-
-
 
 // Service Testing:
 // eventBus.on('muk', (data)=>{
@@ -70,5 +60,5 @@ export function createNote(email){
 
 // setTimeout(()=>{
 //     eventBus.emit('muk', 'Buuuu!')
-//     // eventBus.emit('puk', 3)
+//     eventBus.emit('puk', 3)
 // }, 3000)

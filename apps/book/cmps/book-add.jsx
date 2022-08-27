@@ -5,7 +5,7 @@ import { SearchedBooksList } from "./searched-books-list.jsx"
 export class BookAdd extends React.Component {
 
     state = {
-        searchedBook: null,
+        searchedBook: '',
         books: null,
     }
 
@@ -46,6 +46,7 @@ export class BookAdd extends React.Component {
                     name="search-book"
                     value={searchedBook}
                     onChange={this.handleChange} />
+                    <button>Add</button>
             </form>
             {books && <ul className="searched-book-list">
                 {books.map(book => <SearchedBooksList

@@ -1,20 +1,31 @@
 import { MailList } from "../cmps/mail-list.jsx"
 import { SideNav } from "../cmps/side-nav-bar.jsx"
+import { EmailFilter } from "../cmps/email-filter.jsx"
+import { UnreadCounter } from "../cmps/email-unread-counter.jsx"
 import { EmailService } from "../services/mail.service.js"
 
 export class MailIndex extends React.Component {
 
     state = {
         emails: [],
+        filterBy: null,
+        unreadEmails: 0
+
     }
 
     componentDidMount() {
         this.loadEmails()
+        this.checkUnreadEmails()
     }
 
     loadEmails = () => {
         EmailService.query()
             .then((emails) => this.setState({ emails }))
+    }
+
+    checkUnreadEmails = () => {
+        EmailService.getUnreadEmails()
+            .then((unreadEmails) => this.setState({ unreadEmails }))
     }
 
     onRemoveEmail = (emailId) => {
@@ -34,11 +45,12 @@ export class MailIndex extends React.Component {
 
 
     render() {
-        const { emails } = this.state
+        const { emails, unreadEmails } = this.state
         return (
             <section className="mail-index-container">
                 <SideNav />
-                <MailList emails={emails} onRemoveEmail={this.onRemoveEmail}/>
+                <UnreadCounter unreadEmails={unreadEmails} />
+                <MailList emails={emails} onRemoveEmail={this.onRemoveEmail} />
             </section>
         )
     }

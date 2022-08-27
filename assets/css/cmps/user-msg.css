@@ -2,13 +2,14 @@
     background-color: lightgray;
     padding: 1em;
     position: absolute;
-    top: 1em;
-    right: 1em;
-    opacity: 0;
+    bottom: 100px;
+    left: 25;
+    opacity: 100%;
+    z-index: 10;
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(30, 30, 30);
     opacity: 100;
     transform: opacity .4s;
 }

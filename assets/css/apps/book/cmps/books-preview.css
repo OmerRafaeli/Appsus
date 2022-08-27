@@ -1,8 +1,9 @@
 
 .books-preview{
     padding: 10px;
-    box-shadow: 0 0 9px 1px black;
+    box-shadow: 0 0 9px 1px black;    
    position: relative;
+   
 }
 
 .books-preview img{
@@ -25,4 +26,11 @@
     background-color: rgb(39, 37, 37);
     color: whitesmoke;
     border-radius: 5px;
+}
+
+@media (max-width: 500px){
+    .books-preview{    
+        margin-inline-start: 85px;
+        margin-inline-end: 85px;
+    }
 }

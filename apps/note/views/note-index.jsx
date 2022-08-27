@@ -60,6 +60,7 @@ export class NoteIndex extends React.Component {
             <UserMsg/>
             <NotesFilter onSetFilter={this.onSetFilter} />
             <AddNote onAddNote={this.onAddNote} />
+            <hr />
             <NoteList notes={notes}
                 onRemoveNote={this.onRemoveNote}
                 onAddNote={this.onAddNote}

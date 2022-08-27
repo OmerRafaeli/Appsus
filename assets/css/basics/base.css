@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    font-family: noto-light;
 }
 
 h1,
@@ -13,9 +14,12 @@ h4,
 h5,
 h6 {
     margin: 0;
+    font-family: noto-regular;
+    font-size: 1em;
 }
 
 a {
+    font-family: noto-regular;
     text-decoration: none;
     color: inherit;
 }
@@ -23,5 +27,5 @@ a {
 img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }

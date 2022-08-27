@@ -1,14 +1,25 @@
-.mail-list-container{
+.mail-list-container {
     margin-top: 35px;
     height: 90vh;
-    padding: 10px;    
+    padding: 10px;
+    margin-top: 125px;
     margin-inline-end: 15px;
     background-color: #fefeff;
     font-size: 1em;
     border-radius: 25px;
     flex-grow: 9;
+    overflow-y: scroll;
+
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
-.mail-list-container ul{
+.mail-list-container::-webkit-scrollbar {
+    display: none;
+  }
+
+.mail-list-container ul {
     padding-left: 15px;
 }

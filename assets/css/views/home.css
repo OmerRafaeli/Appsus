@@ -1,0 +1,62 @@
+.home{
+    width: 85vw;
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.appsus-logo{
+    text-align: center;
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
+    max-width: 450px;
+    z-index: 0;
+}
+
+.app-links{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 75px;
+}
+
+.app-links img{
+    width: 100px;
+    height: auto;
+}
+
+.members{
+    display: flex;
+    margin-top: 50px;
+}
+
+.member-img{
+    width: 25%;
+    height: auto;
+    align-items: center;
+}
+
+.animate__animated.animate__backInLeft {
+    --animate-duration: 2s;
+  }
+
+  @media (max-width: 500px){
+    .app-links{
+        flex-direction: column;
+    }
+
+    .members{
+        flex-direction: column;
+    }
+
+    .app-links{        
+        gap: 75px;
+    }
+
+    .member-img{
+        width: 45%;
+        height: auto;
+    }
+  }

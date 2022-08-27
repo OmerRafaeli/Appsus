@@ -1,0 +1,11 @@
+.unread-counter{
+    position: fixed;
+    left: 75px;
+    top: 270px;
+    background-color: brown;
+    text-align: center;
+    color: aliceblue;
+    padding: 3px;
+    border-radius: 50%;
+    width: 25px;
+}
