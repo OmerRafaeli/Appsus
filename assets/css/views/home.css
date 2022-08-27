@@ -35,11 +35,16 @@
     align-items: center;
 }
 
-.member-info-container p{
-    flex: 1;
-    display: flex;
-    width: 350px
-}
 .animate__animated.animate__backInLeft {
     --animate-duration: 2s;
+  }
+
+  @media (max-width: 500px){
+    .app-links{
+        flex-direction: column;
+    }
+
+    .members{
+        flex-direction: column;
+    }
   }
