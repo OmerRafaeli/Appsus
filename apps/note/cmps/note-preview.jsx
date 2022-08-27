@@ -81,7 +81,7 @@ export class NotePreview extends React.Component {
             }
         }
 
-        return <section className="note-preview" style={{ backgroundColor }}>
+        return <section className="note-preview" style={{ backgroundColor }} >
 
             <DynamicCmp />
             <UserBtns note={note}
