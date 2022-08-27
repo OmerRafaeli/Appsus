@@ -52,7 +52,7 @@ export class BooksFilter extends React.Component {
                     name="price"
                     value={price}
                     onChange={this.handleChange} />
-                <button>Filter</button>
+                {/* <button>Filter</button> */}
             </form>
 
         </section>

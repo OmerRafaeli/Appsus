@@ -1,16 +1,37 @@
+.book-add form {
+    margin-top: 120px;
+    margin-bottom: 30px;
+}
+
 .book-add .searched-book-list p {
     /* width: 400px; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 5px;
-
 }
 
-.book-add .searched-book-list button{
-    padding: 0px;
-    height: 20px;
-    width: 20px;
-    float: right;
-    border-radius: 50px;
+.book-add form input {
+    margin-inline-end: 10px;
+    height: 1.8rem;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+.book-add form button {
+    /* float: right; */
+    cursor: pointer;
+    padding: 0.2rem;
+    background-color: rgb(39, 37, 37);
+    color: whitesmoke;
+    border-radius: 8px;
+}
+
+.book-add ul button{
+    cursor: pointer;
+    padding: 0.3rem;
+    background-color: rgb(39, 37, 37);
+    color: whitesmoke;
+    border-radius: 8px;
 }
