@@ -50,6 +50,7 @@ export class Compose extends React.Component {
     }
 
     onCreateNote = (email) => {
+        console.log('email:', email)
         createNote(email)
     }
 
@@ -66,7 +67,7 @@ export class Compose extends React.Component {
 
     render() {
         const { onIsComposing } = this.props
-        const { to, subject, message } = this.state.emailContent
+        const { to, subject, message ,body} = this.state.emailContent
         return <form onSubmit={this.onSubmit} className="compose-container">
             <div className="compose-headline">
                 <h1>New Message</h1>
@@ -97,7 +98,7 @@ export class Compose extends React.Component {
                 onChange={this.handleChange}
             />
             <button onClick={this.onSendEmail}>Send</button>
-            <Link to={"/note"} onClick={() => this.onCreateNote({ subject, body })}><img className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
+            <Link to={"/note"} onClick={() => this.onCreateNote({ subject, message })}><img className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
         </form>
     }
 

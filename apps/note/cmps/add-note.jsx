@@ -13,8 +13,8 @@ export class AddNote extends React.Component {
     componentDidMount() {
         this.unsubscribe = eventBusService.on('mail-to-note', (email) => {
             console.log('email:', email)
-            const { subject, body } = email
-            this.onCreateNote('note-txt', body, subject)
+            const { subject, message } = email
+            this.onCreateNote('note-txt', message, subject)
         })
     }
 
