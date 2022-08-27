@@ -4,6 +4,7 @@ import { NoteTxt } from './note-txt.jsx'
 import { NoteVideo } from './note-video.jsx'
 import { noteService } from '../services/note.service.js'
 import { UserBtns } from './user-btns.jsx'
+import { NoteCanvas } from './note-canvas.jsx'
 
 
 export class NotePreview extends React.Component {
@@ -54,16 +55,16 @@ export class NotePreview extends React.Component {
             .then(() => this.loadNote())
     }
 
-    
+
     render() {
         const { note } = this.state
         if (!note) return
         // console.log('this.state.note:', this.state.note)
-        const { onRemoveNote, onAddNote ,onChangeNotePin} = this.props
-        const { txt, url ,title} = note.info
+        const { onRemoveNote, onAddNote, onChangeNotePin } = this.props
+        const { txt, url, title } = note.info
         const { backgroundColor } = note
         const { onChangeTxt, onChangeColor, onAddTodo,
-             onTodoIsDone, onRemoveTodo } = this
+            onTodoIsDone, onRemoveTodo } = this
         // console.log('backgroundColor:', backgroundColor)
         function DynamicCmp() {
             switch (note.type) {
@@ -78,6 +79,8 @@ export class NotePreview extends React.Component {
                         onRemoveTodo={onRemoveTodo} />
                 case 'note-video':
                     return <NoteVideo note={note} url={url} />
+                case 'note-canvas':
+                    return <NoteCanvas note={note}/>
             }
         }
 

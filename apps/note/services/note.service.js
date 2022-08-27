@@ -5,7 +5,7 @@ export const noteService = {
     query,
     getNoteById,
     removeNote,
-    createNote: createNote,
+    createNote,
     addNote,
     changeNoteColor,
     editTxt,
@@ -304,6 +304,7 @@ function createNote(type, backgroundColor, txt, title = '', todos) {
     let note
     switch (type) {
         case 'note-txt':
+            console.log('type:', type)
             note = _createTxtNote(txt, title, backgroundColor)
             break
         case 'note-img':
@@ -315,6 +316,8 @@ function createNote(type, backgroundColor, txt, title = '', todos) {
         case 'note-video':
             note = _createVideoNote(txt, backgroundColor)
             break
+        case 'note-canvas':
+            note = _createCanvasNote(txt, backgroundColor)
     }
     return Promise.resolve(note)
 }
@@ -428,16 +431,29 @@ function _createVideoNote(txt, backgroundColor) {
     }
 }
 
+function _createCanvasNote(txt, backgroundColor) {
+    return {
+        id: utilService.makeId(5),
+        type: 'note-canvas',
+        isPinned: false,
+        info: {
+            txt,
+
+        },
+        backgroundColor
+    }
+}
+
 function _setRandomNoteColor() {
     const colors = [
         'rgb(237 122 122)',
-       'rgb(213, 114, 243)',
-       'rgb(155, 114, 243)',
-       'rgb(114, 161, 243)',
-       'rgb(114, 243, 222)',
-       'rgb(151, 243, 114)',
-       'rgb(243, 193, 114)',
-       'rgb(245 236 77)'
+        'rgb(213, 114, 243)',
+        'rgb(155, 114, 243)',
+        'rgb(114, 161, 243)',
+        'rgb(114, 243, 222)',
+        'rgb(151, 243, 114)',
+        'rgb(243, 193, 114)',
+        'rgb(245 236 77)'
     ]
 
     const color = colors[utilService.getRandomIntInclusive(0, 7)]

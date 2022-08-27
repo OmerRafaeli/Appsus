@@ -43,6 +43,8 @@ export class AddNote extends React.Component {
             case 'note-video':
                 this.setState({ enterTxt: 'Write video url here', type })
                 break
+            case 'note-canvas':
+                this.setState({ enterTxt: 'Canvas title here', type })
         }
     }
 
@@ -62,8 +64,10 @@ export class AddNote extends React.Component {
     }
 
     onSubmit = (ev) => {
-        console.log('target:', target)
         ev.preventDefault()
+        console.log('ev:', ev)
+        this.onCreateNote(this.state.type, this.state.txt)
+        // console.log('target:', target)
     }
 
 
@@ -88,6 +92,7 @@ export class AddNote extends React.Component {
                         <button onClick={() => onGetType('note-img')}><i className="fa-solid fa-image"></i></button>
                         <button onClick={() => onGetType('note-todos')}><i className="fa-solid fa-list"></i></button>
                         <button onClick={() => onGetType('note-video')}><i className="fa-brands fa-youtube"></i></button>
+                        <button onClick={() => onGetType('note-canvas')}><i className="fa-brands fa-youtube"></i></button>
                     </div>
                 </form>
             </div>
