@@ -1,11 +1,7 @@
 /* BASE
-@import './basics/base.css';
-@import 'basics/helpers.css';
-@import 'basics/layout.css'; */
 
 
 /* VIEWS */
-@import 'views/home.css';
 @import 'views/book-details.css';
 
 /* CMP */

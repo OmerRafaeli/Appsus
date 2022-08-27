@@ -1,0 +1,45 @@
+.home{
+    width: 85vw;
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
+    text-align: center;
+}
+
+.appsus-logo{
+    margin-inline-start: 5%;
+    margin-inline-end: 5%;
+    max-width: 350px;
+}
+
+.app-links{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+.app-links img{
+    width: 100px;
+    height: auto;
+}
+
+.members{
+    display: flex;
+    margin-top: 50px;
+}
+
+.member-img{
+    width: 15%;
+    height: auto;
+    align-items: center;
+}
+
+.member-info-container p{
+    flex: 1;
+    display: flex;
+    width: 350px
+}
+.animate__animated.animate__backInLeft {
+    --animate-duration: 2s;
+  }
