@@ -5,6 +5,7 @@ import { NoteVideo } from './note-video.jsx'
 import { noteService } from '../services/note.service.js'
 import { UserBtns } from './user-btns.jsx'
 import { NoteCanvas } from './note-canvas.jsx'
+import { NoteMap } from './note-map.jsx'
 
 
 export class NotePreview extends React.Component {
@@ -81,6 +82,8 @@ export class NotePreview extends React.Component {
                     return <NoteVideo note={note} url={url} />
                 case 'note-canvas':
                     return <NoteCanvas note={note}/>
+                case 'note-map':
+                    return <NoteMap note={note}/>
             }
         }
 

@@ -304,7 +304,7 @@ function createNote(type, backgroundColor, txt, title = '', todos) {
     let note
     switch (type) {
         case 'note-txt':
-            console.log('type:', type)
+            // console.log('type:', type)
             note = _createTxtNote(txt, title, backgroundColor)
             break
         case 'note-img':
@@ -318,6 +318,10 @@ function createNote(type, backgroundColor, txt, title = '', todos) {
             break
         case 'note-canvas':
             note = _createCanvasNote(txt, backgroundColor)
+            break
+        case 'note-map':
+            note = _createMapNote(txt, backgroundColor)
+            break
     }
     return Promise.resolve(note)
 }
@@ -435,6 +439,19 @@ function _createCanvasNote(txt, backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-canvas',
+        isPinned: false,
+        info: {
+            txt,
+
+        },
+        backgroundColor
+    }
+}
+
+function _createMapNote(txt, backgroundColor){
+    return {
+        id: utilService.makeId(5),
+        type: 'note-map',
         isPinned: false,
         info: {
             txt,

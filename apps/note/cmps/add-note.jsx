@@ -45,6 +45,8 @@ export class AddNote extends React.Component {
                 break
             case 'note-canvas':
                 this.setState({ enterTxt: 'Canvas title here', type })
+            case 'note-map':
+                this.setState({ enterTxt: 'Map title here', type })
         }
     }
 
@@ -92,7 +94,8 @@ export class AddNote extends React.Component {
                         <button onClick={() => onGetType('note-img')}><i className="fa-solid fa-image"></i></button>
                         <button onClick={() => onGetType('note-todos')}><i className="fa-solid fa-list"></i></button>
                         <button onClick={() => onGetType('note-video')}><i className="fa-brands fa-youtube"></i></button>
-                        <button onClick={() => onGetType('note-canvas')}><i className="fa-brands fa-youtube"></i></button>
+                        {/* <button onClick={() => onGetType('note-canvas')}><i className="fa-brands fa-youtube"></i></button> */}
+                        {/* <button onClick={() => onGetType('note-map')}><i className="fa-brands fa-youtube"></i></button> */}
                     </div>
                 </form>
             </div>
