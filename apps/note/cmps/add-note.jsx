@@ -13,7 +13,7 @@ export class AddNote extends React.Component {
     componentDidMount() {
         this.unsubscribe = eventBusService.on('mail-to-note', (email) => {
             console.log('email:', email)
-            const {subject, body} = email            
+            const { subject, body } = email
             this.onCreateNote('note-txt', body, subject)
         })
     }
@@ -50,7 +50,7 @@ export class AddNote extends React.Component {
         if (!txt) return
         // console.log('type:', type)
         // console.log('txt:', txt)
-        noteService.createNote(type, 'rgb(155, 114, 243)',txt, title)
+        noteService.createNote(type, 'rgb(155, 114, 243)', txt, title)
             .then(note => {
                 this.props.onAddNote(note)
             })
@@ -61,16 +61,21 @@ export class AddNote extends React.Component {
         })
     }
 
+    onSubmit = (ev) => {
+        console.log('target:', target)
+        ev.preventDefault()
+    }
+
 
     render() {
-        const { onGetType, onHandleChange, onCreateNote } = this
+        const { onGetType, onHandleChange, onCreateNote, onSubmit } = this
         const { enterTxt, type, txt } = this.state
         // const { onAddNote } = this.props
         // console.log('enterTxt:', enterTxt)
         // console.log('type:', type)
         return <section className="add-note">
             <div className="note-input">
-                <form onBlur={() => onCreateNote(type, txt)}>
+                <form onSubmit={onSubmit} onBlur={() => onCreateNote(type, txt)}>
                     <label htmlFor="add-note"></label>
                     <input type="text"
                         id="add-note"

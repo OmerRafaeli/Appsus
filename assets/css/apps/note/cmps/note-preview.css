@@ -3,7 +3,8 @@
     flex-direction: column;
     position: relative;
     background-color: aquamarine;
-    min-width: 140px;
+    font-size: 1em;
+    min-width: 10%;
     min-height: 20px;
     margin: auto;
     margin-bottom: 15px;

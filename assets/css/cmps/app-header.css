@@ -2,6 +2,12 @@ header {
     width: 100%;
     background: rgb(251, 251, 251);
     border-bottom: 2px solid white;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
 }
 
 .app-header {

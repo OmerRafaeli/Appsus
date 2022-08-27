@@ -35,7 +35,7 @@ export class AppHeader extends React.Component {
             </nav>
 
             <div className="app-menu-icon">
-                <img onClick={this.onOpenMenu} src="../assets/img/appMenuIcon.svg" alt="" />
+                <img onClick={this.onOpenMenu} src="assets/img/appMenuIcon.svg" alt="" />
             </div>
         </header>
     }

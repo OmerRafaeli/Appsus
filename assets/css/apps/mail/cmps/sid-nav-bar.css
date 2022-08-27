@@ -1,6 +1,7 @@
 .side-nav-container{
     width: 100px;
     flex-grow: 1;
+    margin-top: 125px;
 }
 
 .side-nav-container>*{
@@ -23,4 +24,10 @@
 
 .filter a{
     margin-top: 15px;
+}
+
+@media (max-width: 500px){
+    .side-nav-container{
+        /* margin-top: 125px; */
+    }
 }

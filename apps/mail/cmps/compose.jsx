@@ -22,18 +22,18 @@ export class Compose extends React.Component {
     componentDidMount() {
         const { emailContent } = this.state
         this.unsubscribe = eventBusService.on('note-to-mail', (note) => {
-            
+
             // this.setState({ emailContent: { ...emailContent, subject: note.info.txt } })
         })
     }
 
 
     onSubmit = (ev) => {
-        ev.preventDefault()
-        EmailService.sendEmail(this.state.emailContent, Date.now())
-        console.log(':', this.state.emailContent)
-        
+        ev.preventDefault()        
+    }
 
+    onSendEmail = () => {
+        EmailService.sendEmail(this.state.emailContent, Date.now())
     }
 
     handleChange = ({ target }) => {
@@ -47,17 +47,28 @@ export class Compose extends React.Component {
         }))
     }
 
-    onCreateNote = (email) => {        
+    onCreateNote = (email) => {
         createNote(email)
+    }
+
+    onCloseComposer = () => {
+        const { onIsComposing } = this.props
+        const { to, subject, message } = this.state.emailContent
+        if (to !== '' || subject !== '' || message !== '') {
+            EmailService.createDraft(to, subject, message)
+            {onIsComposing()}
+        } else{
+            {onIsComposing()}
+        }
     }
 
     render() {
         const { onIsComposing } = this.props
-        const { to, subject, body } = this.state.emailContent
+        const { to, subject, message } = this.state.emailContent
         return <form onSubmit={this.onSubmit} className="compose-container">
             <div className="compose-headline">
                 <h1>New Message</h1>
-                <button onClick={onIsComposing}>X</button>
+                <button onClick={this.onCloseComposer}>X</button>
             </div>
             <input
                 name="to"
@@ -76,15 +87,15 @@ export class Compose extends React.Component {
                 onChange={this.handleChange}
             />
             <input
-                name="body"
+                name="message"
                 className="body compose-input"
                 type="text"
                 placeholder="message..."
-                value={body}
+                value={message}
                 onChange={this.handleChange}
             />
-            <button>Send</button>
-            <Link to={"/note"} onClick={()=> this.onCreateNote({subject, body})}><img className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
+            <button onClick={this.onSendEmail}>Send</button>
+            <Link to={"/note"} onClick={() => this.onCreateNote({ subject, body })}><img className="icon-btn" src="assets/img/keepIcon.svg" alt="" /></Link>
         </form>
     }
 

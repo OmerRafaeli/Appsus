@@ -1,11 +1,13 @@
 import { MailList } from "../cmps/mail-list.jsx"
 import { SideNav } from "../cmps/side-nav-bar.jsx"
+import { EmailFilter } from "../cmps/email-filter.jsx"
 import { EmailService } from "../services/mail.service.js"
 
 export class MailIndex extends React.Component {
 
     state = {
         emails: [],
+        filterBy: null,
     }
 
     componentDidMount() {

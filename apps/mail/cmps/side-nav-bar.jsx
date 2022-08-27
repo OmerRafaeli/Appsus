@@ -38,7 +38,7 @@ export class SideNav extends React.Component {
         let { isComposing } = this.state
         isComposing = !isComposing
         this.setState({ isComposing })
-        if(!this.state.isComposing)console.log('composing!')
+        if(this.state.isComposing)console.log('composing!')
         setTimeout(() => {
             console.log('this.state:', this.state)
 

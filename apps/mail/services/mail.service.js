@@ -7,11 +7,14 @@ export const EmailService = {
     starClick,
     remove,
     markRead,
-    sendEmail
+    sendEmail,
+    createDraft
 
 }
 
 const KEY = 'mailsDB'
+const SENT_KEY = 'sentMailDB'
+const DRAFT_KEY = 'draftDB'
 
 const loggedinUser = {
     email: 'user@appsus.com',
@@ -27,7 +30,8 @@ const data = [
         isImportant: false,
         sentAt : 1551133930594, 
         to: 'momo@momo.com',
-        isSent: false
+        isSent: false,
+        isDraft: false
     },
     {
         id: 'e1012', 
@@ -37,7 +41,8 @@ const data = [
         isImportant: false,
         sentAt : 1551243930594, 
         to: 'popo@momo.com',
-        isSent: false
+        isSent: false,
+        isDraft: false
     },
     {
         id: 'e1013', 
@@ -47,7 +52,8 @@ const data = [
         isImportant: false,
         sentAt : 1551133510594, 
         to: 'toto@momo.com',
-        isSent: false
+        isSent: false,
+        isDraft: false
     },
     {
         id: 'e1014', 
@@ -57,7 +63,8 @@ const data = [
         isImportant: false,
         sentAt : 1551133510594, 
         to: 'nono@momo.com',
-        isSent: false
+        isSent: false,
+        isDraft: false
     },
     {
         id: 'e1015', 
@@ -67,7 +74,8 @@ const data = [
         isImportant: false,
         sentAt : 1551133510594, 
         to: 'koko@momo.com',
-        isSent: false
+        isSent: false,
+        isDraft: false
     }
 ]
 
@@ -115,6 +123,27 @@ function sendEmail(email){
     
 }
 
+function createDraft(to = 'No Entry', subject = 'No Entry', body = 'No Entry'){
+    const newDraft = {
+        id: utilService.makeId(),
+        to,
+        subject,
+        body,
+        isRead: true, 
+        sentAt: Date.now(),
+        isImportant: false,
+        isSent: false,
+        isDraft: true
+    }
+
+    let emails = _loadFromStorage()
+    emails.push(newDraft)
+    _saveToStorage(emails)
+    console.log('emails:', emails)
+    
+    return Promise.resolve(emails)
+}
+
 function _createEmail(email, date = Date.now()) {    
     const newEmail = {
         id: utilService.makeId(),
@@ -124,7 +153,8 @@ function _createEmail(email, date = Date.now()) {
         sentAt: date,
         isImportant: false,
         to: email.to,
-        isSent: email.isSent
+        isSent: email.isSent,
+        isDraft: false
     }
     return newEmail
 }

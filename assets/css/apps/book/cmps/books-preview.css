@@ -3,6 +3,7 @@
     padding: 10px;
     box-shadow: 0 0 9px 1px black;    
    position: relative;
+   
 }
 
 .books-preview img{
@@ -28,8 +29,7 @@
 }
 
 @media (max-width: 500px){
-    .books-preview{
-    
+    .books-preview{    
         margin-inline-start: 85px;
         margin-inline-end: 85px;
     }
