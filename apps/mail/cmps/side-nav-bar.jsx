@@ -5,7 +5,6 @@ export class SideNav extends React.Component {
     unsubscribe
     state = {
         isComposing: false
-
     }
 
     componentDidMount() {
@@ -17,28 +16,15 @@ export class SideNav extends React.Component {
 
             }, 3000)
         })
-
-
-
-
-        // console.log('hi!')
-        // let { isComposing } = this.state
-        // isComposing = !isComposing
-        // this.setState({ isComposing })
-
-
-        // setTimeout(()=>{
-        // console.log('delayyyyyy')
-
-        // }, 1500)
-
     }
+
+
 
     onIsComposing = () => {
         let { isComposing } = this.state
         isComposing = !isComposing
         this.setState({ isComposing })
-        if(this.state.isComposing)console.log('composing!')
+        if (this.state.isComposing) console.log('composing!')
         setTimeout(() => {
             console.log('this.state:', this.state)
 
@@ -46,7 +32,7 @@ export class SideNav extends React.Component {
     }
 
     render() {
-        let { isComposing } = this.state
+        let { isComposing} = this.state
         return <section>
             <nav className="side-nav-container">
                 <img onClick={this.onIsComposing} className="compose-img" src="assets/img/composeIcon.svg" alt="" />

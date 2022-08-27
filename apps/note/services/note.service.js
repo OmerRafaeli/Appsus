@@ -19,15 +19,77 @@ export const noteService = {
 
 const KEY = 'notesDB'
 
+
 const gNotes = [
     {
         id: utilService.makeId(5),
         type: 'note-txt',
         isPinned: true,
         info: {
+            title: 'you got this!',
             txt: 'Fullstack Me Baby!'
         },
-        backgroundColor: 'rgb(155, 114, 243)'
+        backgroundColor: _setRandomNoteColor()
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-img',
+        isPinned: true,
+        info: {
+            url: 'https://myandroidwalls.com/wp-content/uploads/2021/07/Cool-Android-Wallpaper-4k-576x1024.jpg',
+            title: 'Bobi and Me'
+        },
+        backgroundColor: _setRandomNoteColor()
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-todos',
+        isPinned: true,
+        backgroundColor: _setRandomNoteColor(),
+        info: {
+            title: 'WorkOut routine',
+            todos: [{
+                id: utilService.makeId(5),
+                txt: '15 pushups',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: '15 reps back lift X 2',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'veggies',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: '15 reps front row X 2',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: '25 min jumpRope',
+                isDone: false,
+                doneAt: null
+            },
+            ]
+        }
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-txt',
+        isPinned: false,
+        info: {
+            txt: 'next time I want to make pizza... Don\'t🤣',
+            title: 'pizzaaaaaa',
+        },
+        backgroundColor: _setRandomNoteColor()
     },
     {
         id: utilService.makeId(5),
@@ -37,15 +99,15 @@ const gNotes = [
             url: 'https://images.pexels.com/photos/3844788/pexels-photo-3844788.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1://some-img/me',
             title: 'Bobi and Me'
         },
-        backgroundColor: 'rgb(155, 114, 243)'
+        backgroundColor: _setRandomNoteColor()
     },
     {
         id: utilService.makeId(5),
         type: 'note-todos',
-        isPinned: false,
-        backgroundColor: 'rgb(155, 114, 243)',
+        isPinned: true,
+        backgroundColor: _setRandomNoteColor(),
         info: {
-            title: 'Get my stuff together',
+            title: 'year\'s resolution',
             todos: [{
                 id: utilService.makeId(5),
                 txt: 'Driving liscence',
@@ -57,7 +119,76 @@ const gNotes = [
                 txt: 'Coding power',
                 isDone: true,
                 doneAt: 187111111
-            }]
+            }
+            ]
+        }
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-todos',
+        isPinned: false,
+        backgroundColor: _setRandomNoteColor(),
+        info: {
+            title: 'groceries',
+            todos: [{
+                id: utilService.makeId(5),
+                txt: 'milk',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'eggs',
+                isDone: true,
+                doneAt: 187111111
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'veggies',
+                isDone: false,
+                doneAt: 187111111
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'cheese',
+                isDone: true,
+                doneAt: 187111111
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'meet and chicken',
+                isDone: true,
+                doneAt: 187111111
+            },
+            ]
+        }
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-todos',
+        isPinned: false,
+        backgroundColor: _setRandomNoteColor(),
+        info: {
+            title: 'long term!',
+            todos: [{
+                id: utilService.makeId(5),
+                txt: 'learn to swim',
+                isDone: false,
+                doneAt: null
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'travel more',
+                isDone: true,
+                doneAt: 187111111
+            },
+            {
+                id: utilService.makeId(5),
+                txt: 'wake up for for practice',
+                isDone: true,
+                doneAt: 187111111
+            },
+            ]
         }
     },
     {
@@ -68,8 +199,29 @@ const gNotes = [
             url: 'https://www.youtube.com/embed/GWUbo0puBk0',
             title: 'Bobi and Me'
         },
-        backgroundColor: 'rgb(155, 114, 243)'
-    }]
+        backgroundColor: _setRandomNoteColor()
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-video',
+        isPinned: false,
+        info: {
+            url: 'https://www.youtube.com/embed/zwedcTK9m98',
+            title: 'Bobi and Me'
+        },
+        backgroundColor: _setRandomNoteColor()
+    },
+    {
+        id: utilService.makeId(5),
+        type: 'note-video',
+        isPinned: false,
+        info: {
+            url: 'https://www.youtube.com/embed/QbrorVyH4mk',
+            title: 'Bobi and Me'
+        },
+        backgroundColor: _setRandomNoteColor()
+    },
+]
 
 function query(filterBy) {
     let notes = _loadFromStorage()
@@ -152,16 +304,16 @@ function createNote(type, backgroundColor, txt, title = '', todos) {
     let note
     switch (type) {
         case 'note-txt':
-            note = _creatTxtNote(txt, title, backgroundColor)
+            note = _createTxtNote(txt, title, backgroundColor)
             break
         case 'note-img':
-            note = _creatImgNote(txt, backgroundColor)
+            note = _createImgNote(txt, backgroundColor)
             break
         case 'note-todos':
-            note = _creatTodoNote(txt, todos, backgroundColor)
+            note = _createTodoNote(txt, todos, backgroundColor)
             break
         case 'note-video':
-            note = _creatVideoNote(txt, backgroundColor)
+            note = _createVideoNote(txt, backgroundColor)
             break
     }
     return Promise.resolve(note)
@@ -223,7 +375,7 @@ function todoIsDone(checked, todoId, noteId) {
     return Promise.resolve(note)
 }
 
-function _creatTxtNote(txt, title,backgroundColor) {
+function _createTxtNote(txt, title, backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-txt',
@@ -236,7 +388,7 @@ function _creatTxtNote(txt, title,backgroundColor) {
     }
 }
 
-function _creatImgNote(txt,backgroundColor) {
+function _createImgNote(txt, backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-img',
@@ -249,7 +401,7 @@ function _creatImgNote(txt,backgroundColor) {
     }
 }
 
-function _creatTodoNote(txt, todos = [],backgroundColor) {
+function _createTodoNote(txt, todos = [], backgroundColor) {
     console.log('todos:', todos)
     return {
         id: utilService.makeId(5),
@@ -263,7 +415,7 @@ function _creatTodoNote(txt, todos = [],backgroundColor) {
     }
 }
 
-function _creatVideoNote(txt,backgroundColor) {
+function _createVideoNote(txt, backgroundColor) {
     return {
         id: utilService.makeId(5),
         type: 'note-video',
@@ -274,6 +426,23 @@ function _creatVideoNote(txt,backgroundColor) {
         },
         backgroundColor
     }
+}
+
+function _setRandomNoteColor() {
+    const colors = [
+        'rgb(237 122 122)',
+       'rgb(213, 114, 243)',
+       'rgb(155, 114, 243)',
+       'rgb(114, 161, 243)',
+       'rgb(114, 243, 222)',
+       'rgb(151, 243, 114)',
+       'rgb(243, 193, 114)',
+       'rgb(245 236 77)'
+    ]
+
+    const color = colors[utilService.getRandomIntInclusive(0, 7)]
+    return color
+
 }
 
 function _saveToStorage(notes) {

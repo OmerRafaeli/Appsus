@@ -5,7 +5,7 @@ import { SearchedBooksList } from "./searched-books-list.jsx"
 export class BookAdd extends React.Component {
 
     state = {
-        searchedBook: null,
+        searchedBook: '',
         books: null,
     }
 

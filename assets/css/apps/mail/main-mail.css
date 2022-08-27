@@ -7,6 +7,7 @@
 @import './cmps/mail-details.css';
 @import './cmps/sid-nav-bar.css';
 @import './cmps/compose.css';
+@import './cmps/email-unread-counter.css';
 
 
 /* MQ */

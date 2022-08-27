@@ -34,6 +34,8 @@ export class Compose extends React.Component {
 
     onSendEmail = () => {
         EmailService.sendEmail(this.state.emailContent, Date.now())
+        this.props.onIsComposing() 
+        console.log('Sent!')
     }
 
     handleChange = ({ target }) => {
